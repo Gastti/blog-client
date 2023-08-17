@@ -26,6 +26,10 @@ export function Login() {
       if (response.ok) {
         const data = await response.json()
         console.log(data)
+      } else {
+        // Manejo de errores para códigos de respuesta no exitosos
+        const errorData = await response.json();
+        console.error('Error en la respuesta:', errorData);
       }
 
     } catch (error) {

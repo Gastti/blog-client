@@ -1,33 +1,47 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
+import { useEffect, useState } from 'react'
 import './App.css'
 
 function App() {
-  const [count, setCount] = useState(0)
+  const [posts, setPosts] = useState([])
+
+  useEffect(() => {
+    fetchPosts()
+  }, [])
+
+  const fetchPosts = async () => {
+    try {
+      const response = await fetch("http://localhost:3000/api/v1/posts")
+
+      if (response.ok) {
+        const data = await response.json()
+        setPosts(data.data)
+
+        console.log(data)
+      } else {
+        const data = await response.json()
+        console.log("ERROR", data)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+  }
 
   return (
     <>
-      <div>
-        <a href="https://vitejs.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
+      {
+        posts?.map(post => (
+          <div>
+            <span>{post.createdAt}</span>
+            <h1>{post.title}</h1>
+            <div className='tags'>{post.tags.map((tag) => <span>{tag}</span>)}</div>
+            <p>{post.content}</p>
+            <div>
+              <img src={post.author.avatar}/>
+              <h2>{post.author.firstname} {post.author.lastname}</h2>
+            </div>
+          </div>
+        ))
+      }
     </>
   )
 }
