@@ -7,12 +7,17 @@ import { Dashboard } from './routes/Dashboard.tsx'
 import { AuthProvider } from './auth/AuthProvider.tsx'
 import { Login } from './routes/Login.tsx'
 import App from './App.tsx'
+import Post from './routes/Post.tsx'
 
 const router = createBrowserRouter([
   {
     path: "/",
     element: <App />
   },
+  {
+    path: "/post/:id",
+    element: <Post />
+  }
   // {
   //   path: "/",
   //   element: <ProtectedRoute />,

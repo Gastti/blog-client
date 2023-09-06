@@ -1,8 +1,11 @@
-import { useEffect, useState } from 'react'
-import './App.css'
+import React, { useState, useEffect } from 'react'
+import { useParams } from 'react-router-dom'
 
-function App() {
-  const [posts, setPosts] = useState([])
+export default function Post() {
+  const {id} = useParams()
+  const [data, setData] = useState([])
+  const [post, setPost] = useState([])
+  const [loading, setLoading] = useState(true)
 
   useEffect(() => {
     fetchPosts()
@@ -10,12 +13,13 @@ function App() {
 
   const fetchPosts = async () => {
     try {
-      const response = await fetch("http://localhost:3000/api/v1/posts/")
+      const response = await fetch(`http://localhost:3000/api/v1/posts/find/${id}`)
 
       if (response.ok) {
         const data = await response.json()
-        setPosts(data.data)
-
+        setData(data.data)
+        setPost(data.post)
+        setLoading(false)
         console.log(data)
       } else {
         const data = await response.json()
@@ -26,11 +30,14 @@ function App() {
     }
   }
 
+  console.log(post)
+
   return (
-    <>
+    <div>
       {
-        posts?.map(post => (
+        (post !== null && !loading) && (
           <div>
+            <div>FUNCIONA</div>
             <span>{post.createdAt}</span>
             <h1><a href={`http://localhost:5173/post/${post._id}`}>{post.title}</a></h1>
             <div className='tags'>{post.tags.map((tag) => <span>{tag}</span>)}</div>
@@ -40,10 +47,8 @@ function App() {
               <h2>{post.author.firstname} {post.author.lastname}</h2>
             </div>
           </div>
-        ))
+        )
       }
-    </>
-  )
+    </div>
+    )
 }
-
-export default App
