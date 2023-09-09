@@ -2,12 +2,10 @@ import React from 'react'
 import ReactDOM from 'react-dom/client'
 import './index.css'
 import { createBrowserRouter, RouterProvider } from "react-router-dom"
-import { ProtectedRoute } from './routes/ProtectedRoute.tsx'
-import { Dashboard } from './routes/Dashboard.tsx'
-import { AuthProvider } from './auth/AuthProvider.tsx'
-import { Login } from './routes/Login.tsx'
 import App from './App.tsx'
-import Post from './routes/Post.tsx'
+import CreatePost from './routes/Posts/CreatePost.tsx'
+import { ThemeContextProvider } from './context/ThemeContext.tsx'
+import Navbar from './components/Navbar/Navbar.tsx'
 
 const router = createBrowserRouter([
   {
@@ -15,25 +13,16 @@ const router = createBrowserRouter([
     element: <App />
   },
   {
-    path: "/post/:id",
-    element: <Post />
+    path: "/post/create",
+    element: <CreatePost />
   }
-  // {
-  //   path: "/",
-  //   element: <ProtectedRoute />,
-  //   children: [
-  //     {
-  //       path: "/dashboard",
-  //       element: <Dashboard />
-  //     }
-  //   ]
-  // }
 ])
 
 ReactDOM.createRoot(document.getElementById('root')!).render(
   <React.StrictMode>
-    <AuthProvider>
+    <ThemeContextProvider>
+      <Navbar />
       <RouterProvider router={router} />
-    </AuthProvider>
+    </ThemeContextProvider>
   </React.StrictMode>,
 )
