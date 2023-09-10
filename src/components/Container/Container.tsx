@@ -10,6 +10,6 @@ interface ContainerProps {
 export default function Container({ children, className }: ContainerProps): React.ReactElement {
   const { theme } = useTheme()
   return (
-    <div className={`container ${className ? className : ""}${theme}`}>{children}</div>
+    <div className={`container ${className ? `${className} ` : ""}${theme}`}>{children}</div>
   )
 }

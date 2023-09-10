@@ -1,0 +1,73 @@
+.navbar {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  max-width: 245px!important;
+  border-right: 1px solid #e2e2e2;
+  height: 100%;
+}
+
+.navbar.dark-mode{
+  border-right: 1px solid #262626;
+}
+
+.logo {
+  color: #101010;
+  font-size: 1.5rem;
+  text-decoration: none;
+  font-weight: bold;
+  padding-left: 10px;
+  margin: 25px 0px;
+}
+
+.dark-mode .logo{
+  color: #fff;
+}
+
+.navbar-links {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.navbar-links a,
+.navbar-links button {
+  text-decoration: none;
+  font-size: 1rem;
+  font-weight: 500;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  border-radius: 6px;
+  transition: all .1s;
+  user-select: none;
+  cursor: pointer;
+  background-color: transparent;
+  border: none;
+}
+
+.navbar-links a.active,
+.navbar-links button.active {
+  font-weight: 700;
+}
+
+.navbar.light-mode .navbar-links a,
+.navbar.light-mode .navbar-links button{
+  color: #101010;
+}
+
+.navbar.dark-mode .navbar-links a,
+.navbar.dark-mode .navbar-links button{
+  color: #fff;
+}
+
+.navbar.light-mode .navbar-links a:hover,
+.navbar.light-mode .navbar-links button:hover{
+  background-color: #10101010;
+}
+
+.navbar.dark-mode .navbar-links a:hover,
+.navbar.dark-mode .navbar-links button:hover{
+  background-color: #ffffff10;
+}

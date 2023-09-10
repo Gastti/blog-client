@@ -64,14 +64,14 @@ export default function CreatePost() {
       formData.append('image', post.image)
     }
 
-    // const response = await axios.post('http://localhost:3000/api/v1/posts', formData, {
-    //   headers: {
-    //     "Content-Type": "multipart/form-data",
-    //     "Authorization": `Bearer ${token}`
-    //   }
-    // })
+    const response = await axios.post('http://localhost:3000/api/v1/posts', formData, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+        "Authorization": `Bearer ${token}`
+      }
+    })
 
-    // console.log(response)
+    console.log(response)
   }
 
   return (
