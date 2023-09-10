@@ -1,10 +1,10 @@
-export interface Posts {
+export interface Post {
   _id:       string;
   author:    Author;
   title:     string;
   content:   string;
   category:  string;
-  image:     string;
+  image:     Image;
   tags:      string[];
   url:       string;
   createdAt: Date;
@@ -16,4 +16,10 @@ export interface Author {
   lastname:  string;
   avatar:    string;
   role:      string;
+}
+
+export interface Image {
+  _id:            string;
+  url:            string;
+  expirationDate: string;
 }
