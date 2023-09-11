@@ -9,7 +9,7 @@ export default function Search() {
   const [posts, setPosts] = useState<Array<Post>>([])
 
   const getPosts = async () => {
-    const API_URL = 'http://localhost:3000/api/v1'
+    const API_URL = 'https://blog-api-nqc2.onrender.com/api/v1'
     const API_ENDPOINT = '/posts'
     axios.get(`${API_URL}${API_ENDPOINT}`)
       .then(response => {

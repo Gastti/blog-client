@@ -73,6 +73,15 @@
   }
 
   .navbar.dark-mode {
+    border-right: none !important;
     border-top: 1px solid #262626;
+  }
+
+  .navbar.light-mode .navbar-links a:hover {
+    background-color: transparent;
+  }
+
+  .navbar.dark-mode .navbar-links a:hover {
+    background-color: transparent;
   }
 }

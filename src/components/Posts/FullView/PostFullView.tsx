@@ -1,4 +1,4 @@
-import React from 'react'
+import './PostFullView.css'
 import { Post } from '../../../types'
 
 export default function PostFullView({ post }: { post: Post }) {
@@ -9,12 +9,12 @@ export default function PostFullView({ post }: { post: Post }) {
         <div className='author-avatar'>
           <img src={post.author.avatar} />
         </div>
-        <div>
+        <div className='author-names'>
           <p className='author-fullname'>
             {post.author.firstname} {post.author.lastname}
           </p>
           <p className='author-username'>
-            @{post.author.username}
+            {post.author.username}
           </p>
         </div>
       </div>
