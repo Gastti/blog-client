@@ -5,7 +5,7 @@ interface ICredentials {
   password: string;
 }
 
-export function Login() {
+export function SignIn() {
   const [credentials, setCredentials] = useState<ICredentials>({
     email: "",
     password: ""

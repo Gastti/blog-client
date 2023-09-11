@@ -12,11 +12,11 @@ export default function Search() {
     const API_URL = 'http://localhost:3000/api/v1'
     const API_ENDPOINT = '/posts'
     axios.get(`${API_URL}${API_ENDPOINT}`)
-    .then(response => {
-      setPosts(response.data.data)
-      console.log(response)
-    })
-    .catch(error => console.log(error))
+      .then(response => {
+        setPosts(response.data.data)
+        console.log(response)
+      })
+      .catch(error => console.log(error))
   }
 
   useEffect(() => {
@@ -25,9 +25,11 @@ export default function Search() {
 
   return (
     <Container className='home'>
-      {posts.map(post => (
-        <PostFullView post={post}/>
-      ))}
+      <div className='posts-container'>
+        {posts.map(post => (
+          <PostFullView post={post} />
+        ))}
+      </div>
     </Container>
   )
 }
