@@ -14,7 +14,6 @@ export default function Search() {
     axios.get(`${API_URL}${API_ENDPOINT}`)
       .then(response => {
         setPosts(response.data.data)
-        console.log(response)
       })
       .catch(error => console.log(error))
   }
@@ -27,7 +26,7 @@ export default function Search() {
     <Container className='home'>
       <div className='posts-container'>
         {posts.map(post => (
-          <PostFullView post={post} />
+          <PostFullView key={post._id} post={post} />
         ))}
       </div>
     </Container>

@@ -4,7 +4,7 @@ import { Post } from '../../../types'
 export default function PostFullView({ post }: { post: Post }) {
 
   return (
-    <article className='article' key={post._id}>
+    <article className='article'>
       <div className='article-author'>
         <div className='author-avatar'>
           <img src={post.author.avatar} />
@@ -26,7 +26,7 @@ export default function PostFullView({ post }: { post: Post }) {
         <img src={post.image.url} />
       </div>
       <div className='article-tags'>
-        {post.tags.map(tag => <span>{tag}</span>)}
+        {post.tags.map(tag => <span key={post._id + tag}>{tag}</span>)}
       </div>
       <div className='article-content'>
         {post.content}
