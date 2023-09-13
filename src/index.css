@@ -1,5 +1,7 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;0,9..40,800;0,9..40,900;0,9..40,1000;1,9..40,300;1,9..40,400;1,9..40,500;1,9..40,600;1,9..40,700;1,9..40,800;1,9..40,900;1,9..40,1000&display=swap');
+
 :root {
-  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'DM Sans', sans-serif;
   line-height: 1.5;
   font-weight: 400;
 
@@ -23,7 +25,6 @@
 #root {
   width: 100%;
   height: 100vh;
-  display: flex;
 }
 
 body {
@@ -34,6 +35,31 @@ body {
 
 * {
   margin: 0;
-  padding: 0;
   box-sizing: border-box;
+}
+
+*:not(ol) {
+  padding: 0;
+}
+
+.custom-input {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  padding: 15px 10px;
+  width: 100%;
+}
+
+.light-mode .custom-input {
+  color: #101010;
+  border-bottom: 1px solid #00000020;
+}
+
+.dark-mode .custom-input {
+  color: #fff;
+  border-bottom: 1px solid #ffffff20;
+}
+
+.custom-input:focus {
+  outline: none;
 }

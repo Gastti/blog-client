@@ -1,78 +1,97 @@
-.article {
+.post-full-view {
   max-width: 750px;
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
   gap: 20px;
-  padding-bottom: 20px;
-  margin-bottom: 20px;
+  padding: 10px;
 }
 
-.home.light-mode .article {
-  border-bottom: 1px solid #10101020;
+.pfv-header {
+  text-align: center;
 }
 
-.home.dark-mode .article {
-  border-bottom: 1px solid #ffffff20;
+.pfv-header .date {
+  color: #00000070;
+  font-weight: 500;
+  line-height: 1rem;
 }
 
-.article-cover {
+.dark-mode .pfv-header .date {
+  color: #ffffff70;
+}
+
+.pfv-header .title {
+  font-weight: 1000;
+  line-height: 2rem;
+  margin-top: 10px;
+}
+
+.pfv-tags {
+  display: flex;
   width: 100%;
-  height: 350px;
-  border-radius: 8px;
-  overflow: hidden;
+  justify-content: center;
+  gap: 10px;
+  margin: 20px 0px;
 }
 
-.article-cover img {
+.pfv-tags span {
+  padding: 0px 12px;
+  border-radius: 2px;
+  font-weight: 500;
+}
+
+.light-mode .pfv-tags span {
+  background-color: #00000010;
+}
+
+.dark-mode .pfv-tags span {
+  background-color: #ffffff10;
+}
+
+.pfv-cover {
+  width: 100%;
+  aspect-ratio: 3/1;
+  border-radius: 3px;
+  overflow: hidden;
+  margin: 20px 0px
+}
+
+.pfv-cover img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.article-tags {
-  display: flex;
-  width: 100%;
-  justify-content: center;
-  gap: 10px;
-}
-
-.home.dark-mode .article-tags span {
-  background-color: #ffffff10;
-  padding: 0px 12px;
-  border-radius: 2px;
-}
-
-.article-author {
+.pfv-author {
   display: flex;
   align-items: center;
   gap: 10px;
+  margin-top: 20px;
 }
 
-.author-avatar {
+.pfv-author .avatar {
   width: 50px;
   height: 50px;
   overflow: hidden;
 }
 
-.author-avatar img {
+.pfv-author .avatar img {
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.author-fullname {
+.pfv-author .fullname {
   font-weight: 700;
   line-height: 1rem;
 }
 
-.author-username {
+.pfv-author .username {
   line-height: 1rem;
 }
 
-.home.light-mode .author-username {
+.light-mode .pfv-author .username {
   color: #10101050;
 }
 
-.home.dark-mode .author-username {
+.dark-mode .pfv-author .username {
   color: #ffffff50;
 }

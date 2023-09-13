@@ -1,0 +1,99 @@
+.create-post-container {
+  height: 100vh;
+  display: block;
+}
+
+.create-post {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  padding-bottom: 48px;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+}
+
+.quill {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  max-height: 500px;
+  overflow: hidden;
+}
+
+.ql-toolbar {
+  width: 100%;
+  z-index: 1;
+  border: none !important;
+}
+
+.light-mode .ql-toolbar,
+.light-mode .quill {
+  border-bottom: 1px solid #00000020 !important;
+}
+
+.light-mode .ql-toolbar {
+  background-color: #fff;
+}
+
+.dark-mode .ql-toolbar,
+.dark-mode .quill {
+  border-bottom: 1px solid #ffffff20 !important;
+}
+
+.dark-mode .ql-toolbar {
+  background-color: #101010;
+}
+
+.ql-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  border: none !important;
+  overflow: hidden;
+}
+
+.ql-editor {
+  flex-grow: 1;
+  overflow-y: scroll;
+  font-size: 1rem;
+  padding: 10px!important;
+}
+
+.post-actions {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 0px;
+  padding-left: 10px;
+}
+
+.light-mode .post-actions {
+  border-bottom: 1px solid #00000020;
+}
+
+.dark-mode .post-actions {
+  border-bottom: 1px solid #ffffff20;
+}
+
+.btn-post-submit,
+.btn-post-save {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  color: #06c;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.btn-post-submit svg,
+.btn-post-save svg {
+  font-size: 30px;
+  color: #06c;
+}

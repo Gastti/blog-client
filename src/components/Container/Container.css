@@ -3,7 +3,6 @@
   justify-content: center;
   width: calc(100% - var(--nav-wide-width));
   margin-left: auto;
-  padding: 10px;
 }
 
 @media (max-width: 1870px) {
@@ -21,5 +20,6 @@
 @media (max-width: 768px) {
   .container {
     width: 100%;
+    display: block;
   }
 }

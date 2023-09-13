@@ -1,0 +1,38 @@
+.loader-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  padding: 20px;
+}
+
+.loader {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  animation: loading 1s linear infinite;
+}
+
+.light-mode .loader {
+  border-top: 3px solid #00000020;
+  border-right: 3px solid #00000020;
+  border-bottom: 3px solid transparent;
+  border-left: 3px solid transparent;
+}
+
+.dark-mode .loader {
+  border-top: 3px solid #ffffff20;
+  border-right: 3px solid #ffffff20;
+  border-bottom: 3px solid transparent;
+  border-left: 3px solid transparent;
+}
+
+@keyframes loading {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}

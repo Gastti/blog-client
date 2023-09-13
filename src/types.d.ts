@@ -23,3 +23,11 @@ export interface Image {
   url:            string;
   expirationDate: string;
 }
+
+export interface RegisterEntry {
+  username:  string
+  firstname: string
+  lastname:  string
+  email:     string
+  password:  string
+}
