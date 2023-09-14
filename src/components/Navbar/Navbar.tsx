@@ -19,7 +19,7 @@ import { useSession } from '../../hooks/useSession'
 export default function Navbar() {
   const { theme, setTheme } = useTheme()
   const [checked, setChecked] = useState<boolean>(false)
-  const { isLogged, isWriter } = useSession()
+  const { isLogged, isWriter, isAdmin } = useSession()
 
   const isNarrowScreen = useMediaQuery({ query: '(max-width: 1264px)' })
 
@@ -82,7 +82,7 @@ export default function Navbar() {
   const renderRoutes = () => {
     return routes.map(route => {
       if (route.private && !isLogged) return null
-      if (route.onlyWriter && !isWriter) return null
+      if (route.onlyWriter && !isWriter && !isAdmin) return null
       if (route.hideForUsers && isLogged) return null
       return (
         <NavLink
@@ -121,6 +121,7 @@ export default function Navbar() {
             //   </NavLink>
             // ))
           }
+          {/*Logout Button acá*/}
           <a
             onClick={handleSwitch}
           >
