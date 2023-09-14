@@ -6,10 +6,12 @@ interface SessionContextValues {
   user: User
   isLogged: boolean
   isWriter: boolean
+  isAdmin: boolean
   tokens: Tokens
   setUser: React.Dispatch<React.SetStateAction<User>>
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>
   setIsWriter: React.Dispatch<React.SetStateAction<boolean>>
+  setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>
   setTokens: React.Dispatch<React.SetStateAction<Tokens>>
 }
 
@@ -19,6 +21,7 @@ export const SessionContextProvider = ({ children }: { children: React.ReactNode
   const [user, setUser] = useState<User>({} as User)
   const [isLogged, setIsLogged] = useState<boolean>(false)
   const [isWriter, setIsWriter] = useState<boolean>(false)
+  const [isAdmin, setIsAdmin] = useState<boolean>(false)
   const [tokens, setTokens] = useState({
     access: '',
     refresh: ''
@@ -36,6 +39,7 @@ export const SessionContextProvider = ({ children }: { children: React.ReactNode
           console.log('Session Context, getMyUser', response)
           setUser(response.data.data)
           setIsWriter(response.data.data.role === 'writer')
+          setIsAdmin(response.data.data.role === 'admin')
           setIsLogged(true)
         })
         .catch(error => console.log('Session Context, getMyUser', error))
@@ -46,10 +50,12 @@ export const SessionContextProvider = ({ children }: { children: React.ReactNode
     user,
     isLogged,
     isWriter,
+    isAdmin,
     tokens,
     setUser,
     setIsLogged,
     setIsWriter,
+    setIsAdmin,
     setTokens
   }
   return (
