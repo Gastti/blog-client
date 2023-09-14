@@ -23,11 +23,15 @@
 
 .logo {
   color: #101010;
-  font-size: 1.5rem;
+  font-size: 2rem;
   text-decoration: none;
   font-weight: bold;
   padding-left: 10px;
   margin: 40px 0px;
+}
+
+.logo span {
+  color: #06c;
 }
 
 .dark-mode .logo {
@@ -44,7 +48,6 @@
   display: flex;
   align-items: center;
   text-decoration: none;
-  font-size: 1rem;
   font-weight: 400;
   gap: 10px;
   padding: 10px;
