@@ -45,21 +45,51 @@ body {
 .custom-input {
   background-color: transparent;
   border: none;
-  font-size: 1rem;
   padding: 15px 10px;
   width: 100%;
+  border-radius: 2px;
+  margin-top: 10px;
 }
 
 .light-mode .custom-input {
   color: #101010;
-  border-bottom: 1px solid #00000020;
+  background-color: #00000005;
+  border: 1px solid #00000020;
 }
 
 .dark-mode .custom-input {
   color: #fff;
-  border-bottom: 1px solid #ffffff20;
+  background-color: #ffffff05;
+  border: 1px solid #ffffff10;
 }
 
 .custom-input:focus {
   outline: none;
+}
+
+@media (max-width: 768px) {
+  .light-mode .custom-input {
+    color: #101010;
+    background-color: transparent;
+  }
+
+  .dark-mode .custom-input {
+    color: #fff;
+    background-color: transparent;
+  }
+}
+
+a {
+  color: #117be5;
+  text-decoration: none;
+  font-weight: 500;
+}
+
+a:hover {
+  color: #2386e9;
+  text-decoration: underline;
+}
+
+a:focus {
+  color: #1a74cf;
 }
