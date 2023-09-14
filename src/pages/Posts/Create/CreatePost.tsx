@@ -16,7 +16,7 @@ interface IPost {
   image: File | null;
 }
 
-const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNkNDc2ZmI3NDNiYzAyYmRiMzBiNDYiLCJ1c2VyUm9sZSI6IndyaXRlciIsImlhdCI6MTY5NDU1MTQ5MywiZXhwIjoxNjk0NTU1MDkzfQ.9mROMpS-Ihe0s4PcRpqezc7BrcntUUnoj0MtC0dkF78'
+const token = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOiI2NGNkNDc2ZmI3NDNiYzAyYmRiMzBiNDYiLCJ1c2VyUm9sZSI6IndyaXRlciIsImlhdCI6MTY5NDYyODc4NiwiZXhwIjoxNjk0NjMyMzg2fQ.jDWvHoAkr6PwGVP9TjabxPZkIxDtfMi8Anq7s09Y5Bc'
 
 export default function CreatePost() {
   const [post, setPost] = useState<IPost>({
