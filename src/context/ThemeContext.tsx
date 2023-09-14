@@ -12,7 +12,7 @@ interface ThemeContextProviderProps {
 export const ThemeContext = createContext<ThemeContextValues>({} as ThemeContextValues)
 
 export const ThemeContextProvider = ({ children }: ThemeContextProviderProps) => {
-  const [theme, setTheme] = useState('dark-mode')
+  const [theme, setTheme] = useState('light-mode')
 
   const body = document.querySelector('body')
   if (body) {
