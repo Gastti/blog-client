@@ -5,6 +5,7 @@
   justify-content: flex-start;
   gap: 10px;
   padding: 10px;
+  position: relative;
 }
 
 .light-mode .post-quick-view {
@@ -116,4 +117,8 @@
 
 .btn-readpost svg {
   font-size: 30px;
+}
+
+.pqv-gradient {
+  position: absolute;
 }
