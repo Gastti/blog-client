@@ -9,6 +9,8 @@ import ReadPost from './pages/Posts/Read/ReadPost'
 import RegisterPage from './pages/Auth/Register/RegisterPage'
 import LoginPage from './pages/Auth/Login/LoginPage'
 import { SessionContextProvider } from './context/SessionContext'
+import EditPost from './pages/Posts/Edit/EditPost'
+import MePage from './pages/Users/Me/MePage'
 
 function App() {
   return (
@@ -24,6 +26,8 @@ function App() {
             <Route path='/read' element={<ReadPost />} />
             <Route path='/auth/register' element={<RegisterPage />} />
             <Route path='/auth/login/' element={<LoginPage />} />
+            <Route path='/edit' element={<EditPost />} />
+            <Route path='/users/me' element={<MePage />} />
           </Routes>
         </ThemeContextProvider>
       </SessionContextProvider>
