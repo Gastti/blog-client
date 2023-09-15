@@ -3,9 +3,10 @@ import './Navbar.Responsive.css'
 import { useState } from 'react'
 import { useMediaQuery } from 'react-responsive'
 import { useTheme } from '../../hooks/useTheme'
+import Modal from '../Modal/Modal'
 import HomeIcon from '@mui/icons-material/Home'
 import SearchIcon from '@mui/icons-material/Search'
-import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined'
+// import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined'
@@ -15,11 +16,13 @@ import { NavLink } from 'react-router-dom'
 import LogoNarrowWhite from '../../assets/images/logo-narrow-white.png'
 import LogoNarrowDark from '../../assets/images/logo-narrow-black.png'
 import { useSession } from '../../hooks/useSession'
+import Logout from '../Logout/Logout'
 
 export default function Navbar() {
   const { theme, setTheme } = useTheme()
   const [checked, setChecked] = useState<boolean>(false)
-  const { isLogged, isWriter, isAdmin } = useSession()
+  const { user, isLogged, isWriter, isAdmin } = useSession()
+  const [openModal, setOpenModal] = useState<boolean>(false)
 
   const isNarrowScreen = useMediaQuery({ query: '(max-width: 1264px)' })
 
@@ -48,14 +51,14 @@ export default function Navbar() {
       onlyWriter: false,
       icon: <SearchIcon sx={{ fontSize: 28 }} />
     },
-    {
-      label: 'Explorar',
-      href: '/explore',
-      private: false,
-      hideForUsers: false,
-      onlyWriter: false,
-      icon: <ExploreOutlinedIcon sx={{ fontSize: 28 }} />
-    },
+    // {
+    //   label: 'Explorar',
+    //   href: '/explore',
+    //   private: false,
+    //   hideForUsers: false,
+    //   onlyWriter: false,
+    //   icon: <ExploreOutlinedIcon sx={{ fontSize: 28 }} />
+    // },
     {
       label: 'Iniciar sesión',
       href: '/auth/login',
@@ -65,12 +68,12 @@ export default function Navbar() {
       icon: <LoginOutlinedIcon sx={{ fontSize: 28 }} />
     },
     {
-      label: 'Cerrar sesión',
-      href: '/auth/logout',
+      label: 'Perfil',
+      href: '/users/me',
       private: true,
       hideForUsers: false,
       onlyWriter: false,
-      icon: <LogoutOutlinedIcon sx={{ fontSize: 28 }} />
+      icon: <div><img src={user?.avatar} /></div>
     }
   ]
 
@@ -109,19 +112,18 @@ export default function Navbar() {
         }
         <div className='navbar-links'>
           {renderRoutes()}
-          {
-            // routes.map(route => (
-            //   <NavLink
-            //     to={route.href}
-            //     key={route.href}
-            //     className={({ isActive }) => isActive ? "active" : ""}
-            //   >
-            //     {route.icon}
-            //     <span>{route.label}</span>
-            //   </NavLink>
-            // ))
-          }
-          {/*Logout Button acá*/}
+
+          {/*Logout Button*/}
+          {isLogged && (
+            <a
+              onClick={() => setOpenModal(true)}
+            >
+              <LogoutOutlinedIcon sx={{ fontSize: 28 }} />
+              <span>Cerrar sesión</span>
+            </a>
+          )}
+
+          {/*Switch Theme Button*/}
           <a
             onClick={handleSwitch}
           >
@@ -132,6 +134,13 @@ export default function Navbar() {
           </a>
         </div>
       </div>
+      {/*Logout Modal*/}
+      <Modal
+        open={openModal}
+        setOpen={setOpenModal}
+      >
+        <Logout setOpenModal={setOpenModal} />
+      </Modal>
     </div>
   )
 }

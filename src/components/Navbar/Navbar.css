@@ -3,6 +3,7 @@
   position: fixed;
   width: var(--nav-wide-width);
   height: 100%;
+  z-index: 1;
 }
 
 .navbar {
@@ -63,7 +64,8 @@
   transition: all .1s;
 }
 
-.navbar-links a:hover svg {
+.navbar-links a:hover svg,
+.navbar-links a:hover>div {
   transform: scale(1.1);
 }
 
@@ -85,4 +87,25 @@
 
 .navbar.dark-mode .navbar-links a:hover {
   background-color: #ffffff10;
+}
+
+.navbar-links a>div {
+  width: 28px;
+  height: 28px;
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.light-mode .navbar-links a>div {
+  border: 2px solid #101010;
+}
+
+.dark-mode .navbar-links a>div {
+  border: 2px solid #ffffff;
+}
+
+.navbar-links a>div>img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
 }
