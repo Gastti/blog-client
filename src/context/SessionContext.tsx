@@ -3,12 +3,12 @@ import { Tokens, User } from '../types'
 import { getMyUser } from '../services/user'
 
 interface SessionContextValues {
-  user: User
+  user: User | null
   isLogged: boolean
   isWriter: boolean
   isAdmin: boolean
   tokens: Tokens
-  setUser: React.Dispatch<React.SetStateAction<User>>
+  setUser: React.Dispatch<React.SetStateAction<User | null>>
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>
   setIsWriter: React.Dispatch<React.SetStateAction<boolean>>
   setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>
@@ -18,7 +18,7 @@ interface SessionContextValues {
 export const SessionContext = createContext<SessionContextValues>({} as SessionContextValues)
 
 export const SessionContextProvider = ({ children }: { children: React.ReactNode }) => {
-  const [user, setUser] = useState<User>({} as User)
+  const [user, setUser] = useState<User | null>({} as User)
   const [isLogged, setIsLogged] = useState<boolean>(false)
   const [isWriter, setIsWriter] = useState<boolean>(false)
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
