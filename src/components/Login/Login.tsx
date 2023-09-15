@@ -1,12 +1,12 @@
 import './Login.css'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Formik, Field, ErrorMessage } from 'formik'
 import * as Yup from "yup";
 import { login } from '../../services/auth';
 import SubContainer from '../SubContainer/SubContainer';
 import { LoginValues } from '../../types';
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import Form from '../Form/Form';
 import { getMyUser } from '../../services/user';
@@ -26,6 +26,7 @@ const RegisterValidationSchema = Yup.object().shape({
 
 export default function Register() {
   const { setIsLogged } = useSession()
+  const navigate = useNavigate()
   const [submitted, setSubmitted] = useState<boolean>(false)
   const [username, setUsername] = useState<string>('')
   const initialValues: LoginValues = {
@@ -59,6 +60,15 @@ export default function Register() {
       })
       .catch(error => console.log(error))
   }
+
+  useEffect(() => {
+    if (submitted) {
+      setTimeout(() => {
+        navigate('/')
+        window.location.reload();
+      }, 5000)
+    }
+  }, [submitted, navigate])
 
   return (
     <SubContainer className='register'>
