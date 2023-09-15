@@ -10,6 +10,11 @@ export interface Post {
   createdAt: Date;
 }
 
+export type PostEntry = {
+  image: File | undefined
+  tags: ''
+} & Omit<Post, '_id' | 'author' | 'image' | 'url' | 'createdAt' | 'tags'>
+
 export interface Author {
   username: string;
   firstname: string;
