@@ -1,9 +1,13 @@
 import './PostFullView.css'
 import { Post } from '../../../types'
-import DOMPurify from 'dompurify';
+import DOMPurify from 'dompurify'
+import { useSession } from '../../../hooks/useSession'
 
 export default function PostFullView({ post }: { post: Post }) {
   const cleanPostContent = DOMPurify.sanitize(post.content)
+  const { user } = useSession()
+  console.log(post.author)
+  console.log(user)
 
   return (
     <article className='post-full-view'>
@@ -16,8 +20,8 @@ export default function PostFullView({ post }: { post: Post }) {
       </div>
       <div className='pfv-content' dangerouslySetInnerHTML={{ __html: cleanPostContent }}></div>
       <div className='pfv-tags'>
-          {post.tags.map(tag => <span key={post._id + tag}>{tag}</span>)}
-        </div>
+        {post.tags.map(tag => <span key={post._id + tag}>{tag}</span>)}
+      </div>
       <div className='pfv-author'>
         <div className='avatar'>
           <img src={post.author.avatar} />
