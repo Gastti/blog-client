@@ -22,13 +22,11 @@ export default function ReadPost() {
       .catch(error => console.log(error))
   }
 
-  console.log(search)
-
   useEffect(() => {
     if (search !== null && search !== undefined) {
       getPost(search)
     }
-  }, [])
+  }, [search])
 
   return (
     <Container className='readpost'>

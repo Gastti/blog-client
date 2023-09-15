@@ -1,0 +1,42 @@
+import './EditPost.css'
+import 'react-quill/dist/quill.snow.css'
+import Editor from '../../../components/Editor/Editor'
+import Container from '../../../components/Container/Container'
+import { methods } from '../../../enums'
+import { useLocation } from 'react-router-dom'
+import { getPostById } from '../../../services/posts'
+import { useEffect, useState } from 'react'
+
+export default function EditPost() {
+  const [post, setPost] = useState({})
+  const { search } = useLocation()
+
+  const getPost = async (query: string) => {
+    const id = query.split('=')[1]
+
+    getPostById(id)
+      .then(response => {
+        const { post } = response.data
+        const postValues = {
+          title: post.title,
+          category: post.category,
+          tags: post.tags.join(','),
+          content: post.content
+        }
+        setPost(postValues)
+      })
+      .catch(error => console.log(error))
+  }
+
+  useEffect(() => {
+    if (search !== null && search !== undefined) {
+      getPost(search)
+    }
+  }, [search])
+
+  return (
+    <Container className='create-post-container'>
+      <Editor method={methods.PUT} />
+    </Container>
+  )
+}
