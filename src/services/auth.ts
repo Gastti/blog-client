@@ -14,3 +14,8 @@ export const login = async ({ email, password }: LoginValues) => {
   const response = await axios.post(`${ENDPOINT}/auth/signin`, { email, password })
   return response
 }
+
+export const logout = () => {
+  localStorage.removeItem("accessToken")
+  localStorage.removeItem("refreshToken")
+}
