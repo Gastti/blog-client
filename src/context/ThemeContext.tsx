@@ -1,8 +1,9 @@
-import { useState, createContext } from 'react'
+import { useState, createContext, useEffect } from 'react'
 
 interface ThemeContextValues {
   theme: string,
   setTheme: React.Dispatch<React.SetStateAction<string>>
+  toggleTheme: () => void
 }
 
 interface ThemeContextProviderProps {
@@ -20,7 +21,17 @@ export const ThemeContextProvider = ({ children }: ThemeContextProviderProps) =>
     body.style.color = theme === 'light-mode' ? '#101010' : '#f1f1f1'
   }
 
-  const values = { theme, setTheme }
+  const toggleTheme = () => {
+    setTheme(theme === 'light-mode' ? 'dark-mode' : 'light-mode')
+    localStorage.setItem('theme', theme === 'light-mode' ? 'dark-mode' : 'light-mode')
+  }
+
+  useEffect(() => {
+    const selectedTheme = localStorage.getItem('theme')
+    if (selectedTheme) setTheme(selectedTheme)
+  }, [])
+
+  const values = { theme, setTheme, toggleTheme }
   return (
     <ThemeContext.Provider value={values}>
       {children}

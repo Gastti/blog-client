@@ -2,13 +2,19 @@
   margin-top: 20px;
 }
 
+@media (min-width: 768px) {
+  .editor-container {
+    margin: 0px 10px;
+  }
+}
+
 .post-actions {
   display: flex;
-  width: 100%;
   justify-content: space-between;
   align-items: center;
   padding: 10px 0px;
   padding-left: 10px;
+  flex-grow: 1;
 }
 
 .light-mode .post-actions {
@@ -48,7 +54,7 @@
 .quill {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+
   max-height: 500px;
   overflow: hidden;
   margin-top: 10px;

@@ -45,8 +45,8 @@ export default function PostQuickView({ post }: { post: Post }) {
           {post.author.firstname} {post.author.lastname}
         </p>
       </div>
-      <div className='pqv-content' dangerouslySetInnerHTML={{ __html: splitedContent + '...' }}></div>
-      <div className='pqv-gradient'></div>
+      <div className='pqv-content' dangerouslySetInnerHTML={{ __html: splitedContent + '...' }}>
+      </div>
       <Link className='btn-readpost' to={`/read?post=${post._id}`}>
         Leer
         <KeyboardArrowRightOutlinedIcon />

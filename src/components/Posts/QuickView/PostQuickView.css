@@ -119,6 +119,23 @@
   font-size: 30px;
 }
 
-.pqv-gradient {
+.pqv-content {
+  position: relative;
+}
+
+.pqv-content::before {
+  content: '';
   position: absolute;
+  width: 100%;
+  height: 80%;
+  bottom: 0px;
+  background-color: transparent;
+}
+
+.light-mode .pqv-content::before {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #ffffff 85%);
+}
+
+.dark-mode .pqv-content::before {
+  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #101010 85%);
 }

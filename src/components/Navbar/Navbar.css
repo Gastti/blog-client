@@ -69,6 +69,11 @@
   transform: scale(1.1);
 }
 
+.navbar-links a:active svg,
+.navbar-links a:active>div {
+  transform: scale(0.9);
+}
+
 .navbar-links a.active {
   font-weight: 700;
 }

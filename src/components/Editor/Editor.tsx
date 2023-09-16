@@ -96,8 +96,7 @@ export default function Editor({ existentValues, method, postIdValue }: { existe
         onSubmit={onSubmit}
       >
         {({ handleSubmit, isSubmitting, setFieldValue }) => (
-          <div className='register-form-container'>
-            <div className='register-form-content'>
+            <>
               {(isSubmitting && !submitted) && <Loader />}
               {(!isSubmitting) && (
                 <Form
@@ -134,8 +133,7 @@ export default function Editor({ existentValues, method, postIdValue }: { existe
                     placeholder='Escribe el contenido de tu publicación' />
                 </Form>
               )}
-            </div>
-          </div>
+            </>
         )}
       </ Formik >
 

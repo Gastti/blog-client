@@ -19,7 +19,7 @@ import { useSession } from '../../hooks/useSession'
 import Logout from '../Logout/Logout'
 
 export default function Navbar() {
-  const { theme, setTheme } = useTheme()
+  const { theme, toggleTheme } = useTheme()
   const [checked, setChecked] = useState<boolean>(false)
   const { user, isLogged, isWriter, isAdmin } = useSession()
   const [openModal, setOpenModal] = useState<boolean>(false)
@@ -78,7 +78,7 @@ export default function Navbar() {
   ]
 
   const handleSwitch = () => {
-    setTheme((state) => (state === 'light-mode' ? 'dark-mode' : 'light-mode'))
+    toggleTheme()
     setChecked(!checked)
   }
 
