@@ -11,6 +11,7 @@ import Loader from '../Loader/Loader';
 import Form from '../Form/Form';
 import { getMyUser } from '../../services/user';
 import { useSession } from '../../hooks/useSession';
+import { handleTokens } from '../../utils/handleTokens';
 
 const RegisterValidationSchema = Yup.object().shape({
   email: Yup.string()
@@ -38,11 +39,6 @@ export default function Register() {
     return (
       <span><ErrorOutlineOutlinedIcon sx={{ fontSize: 16 }} />{msg}</span>
     )
-  }
-
-  const handleTokens = (accessToken: string, refreshToken: string) => {
-    localStorage.setItem("accessToken", accessToken)
-    localStorage.setItem("refreshToken", refreshToken)
   }
 
   const onSubmit = (values: LoginValues) => {
