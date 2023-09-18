@@ -1,6 +1,8 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { Tokens, User } from '../types'
 import { getMyUser } from '../services/user'
+import { refreshSession } from '../services/auth'
+import { handleTokens } from '../utils/handleTokens'
 
 interface SessionContextValues {
   user: User | null
@@ -34,15 +36,21 @@ export const SessionContextProvider = ({ children }: { children: React.ReactNode
     if (getAccessToken !== null && getRefreshToken !== null) {
       const newTokens = { access: getAccessToken, refresh: getRefreshToken }
       setTokens(newTokens)
-      getMyUser(getAccessToken)
+      getMyUser(newTokens.access)
         .then(response => {
-          console.log('Session Context, getMyUser', response)
           setUser(response.data.data)
           setIsWriter(response.data.data.role === 'writer')
           setIsAdmin(response.data.data.role === 'admin')
           setIsLogged(true)
         })
-        .catch(error => console.log('Session Context, getMyUser', error))
+        .catch(() => {
+          refreshSession(getRefreshToken)
+            .then(response => {
+              setTokens(response.data.data)
+              handleTokens(response.data.data.access, response.data.data.refresh)
+            })
+            .catch(error => console.log('Refresh Session Error:', error))
+        })
     }
   }, [])
 

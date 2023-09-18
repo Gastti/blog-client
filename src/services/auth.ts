@@ -15,6 +15,16 @@ export const login = async ({ email, password }: LoginValues) => {
   return response
 }
 
+export const refreshSession = async (refreshToken: string) => {
+  console.log(refreshToken)
+  const response = await axios.post(`${ENDPOINT}/auth/refresh`, {}, {
+    headers: {
+      'Authorization': `Bearer ${refreshToken}`
+    }
+  })
+  return response
+}
+
 export const logout = () => {
   localStorage.removeItem("accessToken")
   localStorage.removeItem("refreshToken")
