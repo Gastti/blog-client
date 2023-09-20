@@ -9,9 +9,9 @@ import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import Form from '../Form/Form';
-import { getMyUser } from '../../services/user';
+// import { getMyUser } from '../../services/user';
 import { useSession } from '../../hooks/useSession';
-import { handleTokens } from '../../utils/handleTokens';
+import { handleLocalStorageTokens } from '../../utils/tokenUtils';
 
 const RegisterValidationSchema = Yup.object().shape({
   email: Yup.string()
@@ -29,7 +29,7 @@ export default function Register() {
   const { setIsLogged } = useSession()
   const navigate = useNavigate()
   const [submitted, setSubmitted] = useState<boolean>(false)
-  const [username, setUsername] = useState<string>('')
+  // const [username, setUsername] = useState<string>('')
   const initialValues: LoginValues = {
     email: '',
     password: ''
@@ -44,25 +44,19 @@ export default function Register() {
   const onSubmit = (values: LoginValues) => {
     login(values)
       .then(response => {
-        const { accessToken, refreshToken } = response.data
-        handleTokens(accessToken, refreshToken)
-        getMyUser(accessToken)
-          .then(response => {
-            setUsername(response.data.data.username)
-            setSubmitted(true)
-            setIsLogged(true)
-          })
-          .catch(error => console.log(error))
+        const { data } = response
+        handleLocalStorageTokens(data.access, data.accessExpiration, data.refresh)
+        setSubmitted(true)
+        setIsLogged(true)
+        navigate('/')
       })
       .catch(error => console.log(error))
   }
 
   useEffect(() => {
     if (submitted) {
-      setTimeout(() => {
-        navigate('/')
-        window.location.reload();
-      }, 5000)
+      navigate('/')
+      window.location.reload()
     }
   }, [submitted, navigate])
 
@@ -81,12 +75,12 @@ export default function Register() {
           <div className='register-form-container'>
             <div className='register-form-content'>
               {(isSubmitting && !submitted) && <Loader />}
-              {
+              {/* {
                 (submitted) &&
                 <p className='welcome-message'>
                   Hola <b>{username}</b>, te enviaremos al inicio en <b>5</b> segundos.
                 </p>
-              }
+              } */}
               {(!isSubmitting) && (
                 <Form
                   method='POST'
