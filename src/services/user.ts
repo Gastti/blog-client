@@ -1,8 +1,8 @@
 import axios from "axios"
-import { ENDPOINT } from "./endpoints"
+import { baseUrl } from "./shared"
 
 export const getMyUser = async (token: string) => {
-  const response = axios.get(`${ENDPOINT}/users/me`, {
+  const response = axios.get(`${baseUrl}/users/me`, {
     headers: {
       "Authorization": `Bearer ${token}`
     }
