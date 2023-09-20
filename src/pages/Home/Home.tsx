@@ -15,7 +15,6 @@ export default function Search() {
       .then(response => {
         setPosts(response.data.data)
         setIsLoading(false)
-        console.log('Home, getAllPost response:', response)
       })
       .catch(error => console.log(error))
   }
