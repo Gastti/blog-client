@@ -1,20 +1,17 @@
 import React, { useState, createContext, useEffect } from 'react'
-import { Tokens, User } from '../types'
+import { User } from '../types'
 import { getMyUser } from '../services/user'
-import { refreshSession } from '../services/auth'
-import { handleTokens } from '../utils/handleTokens'
+import { refresh } from '../services/auth'
 
 interface SessionContextValues {
   user: User | null
   isLogged: boolean
   isWriter: boolean
   isAdmin: boolean
-  tokens: Tokens
   setUser: React.Dispatch<React.SetStateAction<User | null>>
   setIsLogged: React.Dispatch<React.SetStateAction<boolean>>
   setIsWriter: React.Dispatch<React.SetStateAction<boolean>>
   setIsAdmin: React.Dispatch<React.SetStateAction<boolean>>
-  setTokens: React.Dispatch<React.SetStateAction<Tokens>>
 }
 
 export const SessionContext = createContext<SessionContextValues>({} as SessionContextValues)
@@ -24,34 +21,36 @@ export const SessionContextProvider = ({ children }: { children: React.ReactNode
   const [isLogged, setIsLogged] = useState<boolean>(false)
   const [isWriter, setIsWriter] = useState<boolean>(false)
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
-  const [tokens, setTokens] = useState({
-    access: '',
-    refresh: ''
-  })
+
+  const handleSession = async () => {
+    if (localStorage.access) {
+      const expirationTime = parseInt(localStorage.accessExpiration)
+      const currentTime = Date.now() / 1000;
+      console.log('Verificando Token')
+      if (expirationTime - currentTime < 60) {
+        console.log('Token Vencido')
+        const refreshedToken = await refresh(localStorage.refresh)
+        console.log('Check Get 1', refreshedToken)
+        if (refreshedToken) {
+          localStorage.access = refreshedToken.data.data.access
+          localStorage.accessExpiration = refreshedToken.data.data.accessExpiration
+        }
+      }
+
+      const getUser = await getMyUser(localStorage.access)
+      console.log('Check Get 2', getUser)
+      if (getUser) {
+        const user = getUser.data.data
+        setUser(user)
+        setIsWriter(user.role === 'writer')
+        setIsAdmin(user.role === 'admin')
+        setIsLogged(true)
+      }
+    }
+  }
 
   useEffect(() => {
-    const getAccessToken = localStorage.getItem("accessToken")
-    const getRefreshToken = localStorage.getItem("refreshToken")
-
-    if (getAccessToken !== null && getRefreshToken !== null) {
-      const newTokens = { access: getAccessToken, refresh: getRefreshToken }
-      setTokens(newTokens)
-      getMyUser(newTokens.access)
-        .then(response => {
-          setUser(response.data.data)
-          setIsWriter(response.data.data.role === 'writer')
-          setIsAdmin(response.data.data.role === 'admin')
-          setIsLogged(true)
-        })
-        .catch(() => {
-          refreshSession(getRefreshToken)
-            .then(response => {
-              setTokens(response.data.data)
-              handleTokens(response.data.data.access, response.data.data.refresh)
-            })
-            .catch(error => console.log('Refresh Session Error:', error))
-        })
-    }
+    handleSession()
   }, [])
 
   const values = {
@@ -59,12 +58,10 @@ export const SessionContextProvider = ({ children }: { children: React.ReactNode
     isLogged,
     isWriter,
     isAdmin,
-    tokens,
     setUser,
     setIsLogged,
     setIsWriter,
     setIsAdmin,
-    setTokens
   }
   return (
     <SessionContext.Provider value={values}>
