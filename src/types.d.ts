@@ -57,3 +57,11 @@ export interface Tokens {
   access: string;
   refresh: string;
 }
+
+interface HttpError {
+  response: {
+    status: number;
+    // Otras propiedades específicas de tu error
+  };
+  // Otras propiedades específicas de tu error
+}
