@@ -19,9 +19,10 @@
 }
 
 .pfv-header .title {
-  font-weight: 1000;
+  font-weight: 600;
   line-height: 2rem;
   margin-top: 10px;
+  font-size: 2rem;
 }
 
 .pfv-tags {

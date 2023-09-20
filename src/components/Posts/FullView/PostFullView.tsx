@@ -2,15 +2,16 @@ import './PostFullView.css'
 import { Post } from '../../../types'
 import DOMPurify from 'dompurify'
 import { useSession } from '../../../hooks/useSession'
+import { Link } from 'react-router-dom'
 
 export default function PostFullView({ post }: { post: Post }) {
   const cleanPostContent = DOMPurify.sanitize(post.content)
   const { user } = useSession()
-  console.log(post.author)
-  console.log(user)
+  const isAuthor = post.author.username === user?.username
 
   return (
     <article className='post-full-view'>
+      {isAuthor && <Link to={`/edit?=${post._id}`}>Editar</Link>}
       <div className="pfv-header">
         <span className='date'>Publicado el 10 de Septiembre, 2023</span>
         <h2 className='title'>{post.title}</h2>
