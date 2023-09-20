@@ -2,7 +2,7 @@ import { HashRouter, Routes, Route } from 'react-router-dom'
 import { ThemeContextProvider } from './context/ThemeContext'
 import Navbar from './components/Navbar/Navbar'
 import Home from './pages/Home/Home'
-import CreatePost from './pages/Posts/Create/CreatePost'
+import CreatePostPage from './pages/Posts/Create/CreatePostPage'
 import Search from './pages/Search/Search'
 import Explore from './pages/Explore/Explore'
 import ReadPost from './pages/Posts/Read/ReadPost'
@@ -22,7 +22,7 @@ function App() {
             <Route path="/" element={<Home />} />
             <Route path="/search" element={<Search />} />
             <Route path="/explore" element={<Explore />} />
-            <Route path='/posts/create' element={<CreatePost />} />
+            <Route path='/posts/create' element={<CreatePostPage />} />
             <Route path='/read' element={<ReadPost />} />
             <Route path='/auth/register' element={<RegisterPage />} />
             <Route path='/auth/login/' element={<LoginPage />} />

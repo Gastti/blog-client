@@ -1,23 +1,23 @@
 import axios from "axios"
-import { ENDPOINT } from "./endpoints"
+import { baseUrl } from "./shared"
 
 export const getAllPosts = async () => {
-  const response = await axios.get(`${ENDPOINT}/posts`)
+  const response = await axios.get(`${baseUrl}/posts`)
   return response
 }
 
 export const getPostById = async (id: string) => {
-  const response = await axios.get(`${ENDPOINT}/posts/find/${id}`)
+  const response = await axios.get(`${baseUrl}/posts/find/${id}`)
   return response
 }
 
 export const getPostsByAuthor = async (username: string) => {
-  const response = await axios.get(`${ENDPOINT}/posts/author/${username}`)
+  const response = await axios.get(`${baseUrl}/posts/author/${username}`)
   return response
 }
 
-export const createPost = async (body: FormData, token: string) => {
-  const response = await axios.post(`${ENDPOINT}/posts`, body, {
+export const sendNewPost = async (body: FormData, token: string) => {
+  const response = await axios.post(`${baseUrl}/posts`, body, {
     headers: {
       "Authorization": `Bearer ${token}`
     }
@@ -25,8 +25,8 @@ export const createPost = async (body: FormData, token: string) => {
   return response
 }
 
-export const editPost = async (body: FormData, token: string, id: string) => {
-  const response = await axios.put(`${ENDPOINT}/posts/${id}`, body, {
+export const sendEditedPost = async (body: FormData, token: string, id: string) => {
+  const response = await axios.put(`${baseUrl}/posts/${id}`, body, {
     headers: {
       "Authorization": `Bearer ${token}`
     }
