@@ -2,6 +2,8 @@ import './PostQuickView.css'
 import { Post } from '../../../types'
 import { Link } from 'react-router-dom'
 import DOMPurify from 'dompurify'
+import { format, parseISO, isToday } from 'date-fns';
+import { es } from 'date-fns/locale';
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined'
 
 export default function PostQuickView({ post }: { post: Post }) {
@@ -25,27 +27,35 @@ export default function PostQuickView({ post }: { post: Post }) {
     }
   }
 
+  const parsedDate = parseISO(post.createdAt.toString());
+  const publishedToday = isToday(parsedDate)
+  const formatedDate = format(parsedDate, "dd 'de' MMMM 'del' yyyy", { locale: es });
+  const publishAt = publishedToday ? 'Hoy' : formatedDate
+
   const splitedContent = splitText(cleanPostContent, 400) as string
 
   return (
     <article className='post-quick-view'>
-      <div className="pqv-header">
-        <span className='date'>Publicado el 10 de Septiembre, 2023</span>
-        <span>{post.createdAt.toString()}</span>
-        <h2 className='title'><Link to={`/read?post=${post._id}`}>{post.title}</Link></h2>
-      </div>
       <div className='pqv-cover'>
         <img src={post.image.url} />
       </div>
+
       <div className='pqv-author'>
-        <p>Escrito por</p>
-        <div className='avatar'>
-          <img src={post.author.avatar} />
+        <div className='pqv-author-info'>
+          <div className='avatar'>
+            <img src={post.author.avatar} />
+          </div>
+          <p className='fullname'>
+            {post.author.firstname} {post.author.lastname}
+          </p>
         </div>
-        <p className='fullname'>
-          {post.author.firstname} {post.author.lastname}
-        </p>
+        <span>{publishAt}</span>
       </div>
+
+      <div className="pqv-header">
+        <h2 className='title'><Link to={`/read?post=${post._id}`}>{post.title}</Link></h2>
+      </div>
+      
       <div className='pqv-content' dangerouslySetInnerHTML={{ __html: splitedContent + '...' }}>
       </div>
       <Link className='btn-readpost' to={`/read?post=${post._id}`}>

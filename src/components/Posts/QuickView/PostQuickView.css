@@ -3,17 +3,16 @@
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  gap: 10px;
-  padding: 10px;
   position: relative;
+  padding-bottom: 20px;
 }
 
 .light-mode .post-quick-view {
-  border-bottom: 2px solid #10101020;
+  border-bottom: 1px solid #10101020;
 }
 
 .dark-mode .post-quick-view {
-  border-bottom: 2px solid #ffffff20;
+  border-bottom: 1px solid #ffffff20;
 }
 
 .pqv-cover {
@@ -50,7 +49,9 @@
 }
 
 .pqv-header {
-  text-align: center;
+  text-align: left;
+  padding: 10px;
+  padding-bottom: 0px;
 }
 
 .pqv-header .title a {
@@ -71,9 +72,21 @@
 .pqv-author {
   display: flex;
   align-items: center;
-  justify-content: center;
+  justify-content: space-between;
+  padding: 10px;
+}
+
+.pqv-author-info {
+  display: flex;
   gap: 10px;
-  padding: 5px 0px;
+}
+
+.light-mode .pqv-author > span {
+  color: #00000070;
+}
+
+.dark-mode .pqv-author > span {
+  color: #ffffff70;
 }
 
 .light-mode .pqv-author {
@@ -121,6 +134,7 @@
 
 .pqv-content {
   position: relative;
+  padding: 10px;
 }
 
 .pqv-content::before {
@@ -138,4 +152,10 @@
 
 .dark-mode .pqv-content::before {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #101010 85%);
+}
+
+@media (max-width: 768px) {
+  .pqv-cover {
+    border-radius: 0px;
+  }
 }
