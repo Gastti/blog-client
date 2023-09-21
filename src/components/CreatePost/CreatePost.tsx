@@ -6,13 +6,12 @@ import SubContainer from '../SubContainer/SubContainer'
 import './CreatePost.css'
 import Loader from '../Loader/Loader'
 import { PostEntry } from '../../types'
-import { sendNewPost } from '../../services/posts'
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined'
 import ReactQuill from 'react-quill'
 import { useNavigate } from 'react-router-dom'
 import { methods } from '../../enums'
-import { refreshToken } from '../../utils/tokenUtils'
+import useAxios from '../../hooks/useAxios'
 
 const PostValidationSchema = Yup.object().shape({
   title: Yup.string()
@@ -32,11 +31,11 @@ const PostValidationSchema = Yup.object().shape({
 });
 
 export default function CreatePost() {
+  const api = useAxios()
   const navigate = useNavigate()
   const [submitted, setSubmitted] = useState<boolean>(false)
   const [content, setContent] = useState<string>('')
   const [postId, setPostId] = useState<string>('')
-  const [error, setError] = useState('')
 
   const initialValues: PostEntry = {
     title: '',
@@ -62,15 +61,11 @@ export default function CreatePost() {
       formData.append('image', values.image);
     }
 
-    sendNewPost(formData, localStorage.access)
-      .then((response) => {
-        setSubmitted(true)
-        setPostId(response.data.data._id)
-      })
-      .catch((error) => {
-        if (error.response.status === 401) refreshToken()
-        setError('Error al enviar el nuevo post, intenta de nuevo.')
-      })
+    const response = await api.post('/posts', formData)
+    if (response.status === 200) {
+      setSubmitted(true)
+      setPostId(response.data.data._id)
+    }
   }
 
   useEffect(() => {
@@ -86,7 +81,6 @@ export default function CreatePost() {
       >
         {({ handleSubmit, isSubmitting, setFieldValue }) => (
           <>
-            {error && <p>{error}</p>}
             {(isSubmitting && !submitted) && <Loader />}
             {(!isSubmitting) && (
               <Form

@@ -14,6 +14,7 @@ export default function PostFullView({ post }: { post: Post }) {
       {isAuthor && <Link to={`/edit?=${post._id}`}>Editar</Link>}
       <div className="pfv-header">
         <span className='date'>Publicado el 10 de Septiembre, 2023</span>
+        <span>{post.createdAt.toString()}</span>
         <h2 className='title'>{post.title}</h2>
       </div>
       <div className='pfv-cover'>

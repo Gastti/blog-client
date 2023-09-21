@@ -29,7 +29,6 @@ export default function Register() {
   const { setIsLogged } = useSession()
   const navigate = useNavigate()
   const [submitted, setSubmitted] = useState<boolean>(false)
-  // const [username, setUsername] = useState<string>('')
   const initialValues: LoginValues = {
     email: '',
     password: ''
@@ -45,7 +44,7 @@ export default function Register() {
     login(values)
       .then(response => {
         const { data } = response
-        handleLocalStorageTokens(data.access, data.accessExpiration, data.refresh)
+        handleLocalStorageTokens(data.access, data.refresh)
         setSubmitted(true)
         setIsLogged(true)
         navigate('/')
@@ -75,12 +74,7 @@ export default function Register() {
           <div className='register-form-container'>
             <div className='register-form-content'>
               {(isSubmitting && !submitted) && <Loader />}
-              {/* {
-                (submitted) &&
-                <p className='welcome-message'>
-                  Hola <b>{username}</b>, te enviaremos al inicio en <b>5</b> segundos.
-                </p>
-              } */}
+
               {(!isSubmitting) && (
                 <Form
                   method='POST'

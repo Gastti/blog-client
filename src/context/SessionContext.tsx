@@ -1,7 +1,6 @@
 import React, { useState, createContext, useEffect } from 'react'
 import { User } from '../types'
-import { getMyUser } from '../services/user'
-import { refresh } from '../services/auth'
+import useAxios from '../hooks/useAxios'
 
 interface SessionContextValues {
   user: User | null
@@ -17,35 +16,20 @@ interface SessionContextValues {
 export const SessionContext = createContext<SessionContextValues>({} as SessionContextValues)
 
 export const SessionContextProvider = ({ children }: { children: React.ReactNode }) => {
+  const api = useAxios()
   const [user, setUser] = useState<User | null>({} as User)
   const [isLogged, setIsLogged] = useState<boolean>(false)
   const [isWriter, setIsWriter] = useState<boolean>(false)
   const [isAdmin, setIsAdmin] = useState<boolean>(false)
 
   const handleSession = async () => {
-    if (localStorage.access) {
-      const expirationTime = parseInt(localStorage.accessExpiration)
-      const currentTime = Date.now() / 1000;
-      console.log('Verificando Token')
-      if (expirationTime - currentTime < 60) {
-        console.log('Token Vencido')
-        const refreshedToken = await refresh(localStorage.refresh)
-        console.log('Check Get 1', refreshedToken)
-        if (refreshedToken) {
-          localStorage.access = refreshedToken.data.data.access
-          localStorage.accessExpiration = refreshedToken.data.data.accessExpiration
-        }
-      }
-
-      const getUser = await getMyUser(localStorage.access)
-      console.log('Check Get 2', getUser)
-      if (getUser) {
-        const user = getUser.data.data
-        setUser(user)
-        setIsWriter(user.role === 'writer')
-        setIsAdmin(user.role === 'admin')
-        setIsLogged(true)
-      }
+    const response = await api.get('/users/me')
+    if (response.status === 200) {
+      const user = response.data.data
+      setUser(user)
+      setIsWriter(user.role === 'writer')
+      setIsAdmin(user.role === 'admin')
+      setIsLogged(true)
     }
   }
 

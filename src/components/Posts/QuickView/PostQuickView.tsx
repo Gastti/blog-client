@@ -31,6 +31,7 @@ export default function PostQuickView({ post }: { post: Post }) {
     <article className='post-quick-view'>
       <div className="pqv-header">
         <span className='date'>Publicado el 10 de Septiembre, 2023</span>
+        <span>{post.createdAt.toString()}</span>
         <h2 className='title'><Link to={`/read?post=${post._id}`}>{post.title}</Link></h2>
       </div>
       <div className='pqv-cover'>

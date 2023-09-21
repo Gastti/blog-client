@@ -25,6 +25,6 @@ export const refresh = async (refreshToken: string) => {
 }
 
 export const logout = () => {
-  localStorage.removeItem("accessToken")
-  localStorage.removeItem("refreshToken")
+  localStorage.removeItem("access")
+  localStorage.removeItem("refresh")
 }

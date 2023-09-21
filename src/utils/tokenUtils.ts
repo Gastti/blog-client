@@ -6,8 +6,7 @@ export const refreshToken = async () => {
   localStorage.accessExpiration = tokens.data.data.accessExpiration
 }
 
-export function handleLocalStorageTokens(accessToken: string, accessExpiration: string, refreshToken: string) {
+export function handleLocalStorageTokens(accessToken: string, refreshToken: string) {
   localStorage.setItem("access", accessToken)
-  localStorage.setItem("accessExpiration", accessExpiration)
   localStorage.setItem("refresh", refreshToken)
 }
