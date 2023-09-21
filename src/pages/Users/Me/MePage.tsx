@@ -28,7 +28,7 @@ export default function MePage() {
 
   return (
     <Container className='me-page-container'>
-      <SubContainer className='me-page'>
+      <div className='me-page'>
         <div className='personal-info'>
           <div className='user-avatar'>
             <img src={user?.avatar}></img>
@@ -39,12 +39,12 @@ export default function MePage() {
             <p className='biography'>{user?.biography !== undefined ? user?.biography : 'No existe una biografia...'}</p>
           </div>
         </div>
-        <div className='personal-posts'>
+        {/* <div className='personal-posts'>
           {posts?.map(post => (
             <PostQuickView post={post} />
           ))}
-        </div>
-      </SubContainer>
+        </div> */}
+      </div>
     </Container>
   )
 }
