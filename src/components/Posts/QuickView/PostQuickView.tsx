@@ -49,15 +49,14 @@ export default function PostQuickView({ post }: { post: Post }) {
             {post.author.firstname} {post.author.lastname}
           </p>
         </div>
-        <span>{publishAt}</span>
       </div>
-
       <div className="pqv-header">
         <h2 className='title'><Link to={`/read?post=${post._id}`}>{post.title}</Link></h2>
       </div>
-      
+
       <div className='pqv-content' dangerouslySetInnerHTML={{ __html: splitedContent + '...' }}>
       </div>
+      <span className='pqv-publishat'>Publicado el {publishAt}</span>
       <Link className='btn-readpost' to={`/read?post=${post._id}`}>
         Leer
         <KeyboardArrowRightOutlinedIcon />

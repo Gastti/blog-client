@@ -51,6 +51,7 @@ export interface User {
   contactUrl: string
   role: string
   biography: string
+  createdAt: string
 }
 
 export interface Tokens {

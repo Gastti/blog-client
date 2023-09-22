@@ -140,7 +140,7 @@
 .pqv-content::before {
   content: '';
   position: absolute;
-  width: 100%;
+  width: calc(100% - 10px);
   height: 80%;
   bottom: 0px;
   background-color: transparent;
@@ -152,6 +152,11 @@
 
 .dark-mode .pqv-content::before {
   background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #101010 85%);
+}
+
+.pqv-publishat {
+  opacity: 0.6;
+  padding: 5px 10px;
 }
 
 @media (max-width: 768px) {

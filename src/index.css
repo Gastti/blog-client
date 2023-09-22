@@ -82,12 +82,11 @@ body {
 a {
   color: #117be5;
   text-decoration: none;
-  font-weight: 500;
+  font-weight: 600;
 }
 
 a:hover {
-  color: #2386e9;
-  text-decoration: underline;
+  color: inherit;
 }
 
 a:focus {
