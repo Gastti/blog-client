@@ -96,3 +96,7 @@
 .dark-mode .pfv-author .username {
   color: #ffffff50;
 }
+
+.pfv-content {
+  text-align: justify;
+}

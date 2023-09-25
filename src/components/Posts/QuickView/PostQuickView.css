@@ -4,15 +4,15 @@
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-  padding-bottom: 20px;
+
 }
 
 .light-mode .post-quick-view {
-  border-bottom: 1px solid #10101020;
+  border-bottom: 0px solid #10101020;
 }
 
 .dark-mode .post-quick-view {
-  border-bottom: 1px solid #ffffff20;
+  border-bottom: 0px solid #ffffff20;
 }
 
 .pqv-cover {
@@ -54,9 +54,10 @@
   padding-bottom: 0px;
 }
 
-.pqv-header .title a {
+.pqv-title {
   text-decoration: none;
   color: inherit;
+  padding-left: 10px;
 }
 
 .pqv-header .date {
@@ -73,7 +74,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 10px;
+  padding: 15px 10px;
 }
 
 .pqv-author-info {
@@ -113,7 +114,7 @@
 
 .pqv-author .fullname {
   font-weight: 700;
-  line-height: 1rem;
+  line-height: 1.2rem;
 }
 
 .btn-readpost {
@@ -134,7 +135,9 @@
 
 .pqv-content {
   position: relative;
-  padding: 10px;
+  padding: 0px 10px;
+  max-height: 100px;
+  overflow: hidden;
 }
 
 .pqv-content::before {
@@ -163,4 +166,9 @@
   .pqv-cover {
     border-radius: 0px;
   }
+}
+
+.pqv-footer {
+  display: flex;
+  justify-content: space-between;
 }
