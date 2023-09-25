@@ -1,0 +1,59 @@
+.comment-editor {
+  padding: 10px;
+  display: flex;
+  padding-bottom: 100px;
+}
+
+.comment-editor>input {
+  width: 100%;
+  padding: 10px 0px;
+  padding-left: 10px;
+  border: none;
+  font-size: 1rem;
+  flex-wrap: 1;
+  color: inherit;
+}
+
+.comment-editor>input:focus {
+  outline: none;
+}
+
+.light-mode .comment-editor>input,
+.light-mode .comment-editor>button  {
+  background-color: #00000010;
+}
+
+.dark-mode .comment-editor>input,
+.dark-mode .comment-editor>button  {
+  background-color: #ffffff10;
+}
+
+.comment-editor>button {
+  display: flex;
+  align-items: center;
+  flex-wrap: 1;
+  border: none;
+  cursor: pointer;
+  color: #117be5;
+  padding: 0px 10px;
+  font-size: 1rem;
+  font-weight: 600;
+}
+
+.comment-editor>button>svg {
+  display: none;
+}
+
+@media (max-width: 768px) {
+  .comment-editor>button>span {
+    display: none;
+  }
+
+  .comment-editor>button>svg {
+    display: block;
+  }
+
+  .comment-editor>button {
+    padding: 0px 10px;
+  }
+}
