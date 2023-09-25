@@ -5,6 +5,8 @@ import Container from '../../../components/Container/Container'
 import PostFullView from '../../../components/Posts/FullView/PostFullView'
 import Loader from '../../../components/Loader/Loader'
 import { getPostById } from '../../../services/posts'
+import Editor from '../../../components/Comment/Editor'
+import CommentsView from '../../../components/Comment/CommentsView'
 
 export default function ReadPost() {
   const [post, setPost] = useState<Post>()
@@ -30,11 +32,12 @@ export default function ReadPost() {
 
   return (
     <Container className='readpost'>
+      <div className='readpost-container'>
       {isLoading && <Loader />}
       {post && <PostFullView post={post} />}
-      <br></br>
-      <br></br>
-      <br></br>
+      <Editor />
+      <CommentsView />
+      </div>
     </Container>
   )
 }
