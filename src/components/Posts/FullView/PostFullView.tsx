@@ -1,13 +1,12 @@
 import './PostFullView.css'
 import { Post } from '../../../types'
-import DOMPurify from 'dompurify'
 import { useSession } from '../../../hooks/useSession'
-import { Link } from 'react-router-dom'
 import { format, parseISO, isToday } from 'date-fns';
 import { es } from 'date-fns/locale';
+import Markdown from 'react-markdown'
+import OptionsMenu from '../../OptionsMenu/OptionsMenu';
 
 export default function PostFullView({ post }: { post: Post }) {
-  const cleanPostContent = DOMPurify.sanitize(post.content)
   const { user } = useSession()
   const isAuthor = post.author.username === user?.username
 
@@ -18,18 +17,24 @@ export default function PostFullView({ post }: { post: Post }) {
 
   return (
     <article className='post-full-view'>
-      {isAuthor && <Link to={`/edit?=${post._id}`}>Editar</Link>}
+      <div className='pfv-options'>
+        <OptionsMenu isAuthor={isAuthor} />
+      </div>
       <div className="pfv-header">
-        <span className='date'>Publicado {publishAt}</span>
         <h2 className='title'>{post.title}</h2>
+        <span className='date'>Publicado {publishAt}</span>
       </div>
       <div className='pfv-cover'>
         <img src={post.image.url} />
       </div>
-      <div className='pfv-content' dangerouslySetInnerHTML={{ __html: cleanPostContent }}></div>
       <div className='pfv-tags'>
         {post.tags.map(tag => <span key={post._id + tag}>{tag}</span>)}
       </div>
+
+      <div className='pfv-content'>
+        <Markdown>{post.content}</Markdown>
+      </div>
+
       <div className='pfv-author'>
         <div className='avatar'>
           <img src={post.author.avatar} />

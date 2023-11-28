@@ -1,7 +1,7 @@
 .post-full-view {
   max-width: 750px;
   gap: 20px;
-  padding: 10px;
+  margin-top: 10px;
 }
 
 .pfv-header {
@@ -20,9 +20,9 @@
 
 .pfv-header .title {
   font-weight: 600;
-  line-height: 2rem;
-  margin-top: 10px;
-  font-size: 2rem;
+  line-height: 3rem;
+  font-size: 3rem;
+  margin-bottom: 10px;
 }
 
 .pfv-tags {
@@ -65,7 +65,8 @@
   display: flex;
   align-items: center;
   gap: 10px;
-  margin-top: 20px;
+  margin-top: 20px !important;
+  margin-bottom: 20px !important;
 }
 
 .pfv-author .avatar {
@@ -97,6 +98,28 @@
   color: #ffffff50;
 }
 
+.pfv-content,
+.pfv-author,
+.pfv-header {
+  margin: 0px 10px;
+}
+
 .pfv-content {
-  text-align: justify;
+  white-space: pre-line;
+}
+
+.pfv-content ul {
+  padding: auto !important;
+}
+
+.pfv-options {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 767px) {
+  .pfv-cover {
+    aspect-ratio: 4/2;
+    border-radius: 0px;
+  }
 }

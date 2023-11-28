@@ -1,0 +1,135 @@
+.profile-info-container {
+  padding: 20px;
+  border-radius: 6px;
+  margin: 20px 10px 0px 10px;
+  border-top: 2px solid #ffffff10;
+}
+
+.light-mode .profile-info-container {
+  background-color: #ffffff;
+}
+
+.dark-mode .profile-info-container {
+  background-color: #ffffff08;
+}
+
+
+.personal-info {
+  display: flex;
+  max-width: 600px;
+  gap: 20px;
+}
+
+.user-avatar {
+  width: 140px;
+  height: 140px;
+  aspect-ratio: 1/1;
+  border-radius: 50%;
+}
+
+.user-avatar>img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.user-data .fullname,
+.me-username {
+  font-size: 1.3rem;
+  font-weight: 500;
+}
+
+/*AWARDS*/
+.personal-awards {
+  display: flex;
+  gap: 20px;
+}
+
+.award {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.award>svg {
+  opacity: 1;
+}
+
+.award-info>p {
+  line-height: 1rem;
+}
+
+.award-label {
+  opacity: 0.6;
+}
+
+.award-value {
+  font-weight: 700;
+}
+
+.user-data {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.user-data>p {
+  line-height: 1rem
+}
+
+.user-data .contact>a:not(:first-child) {
+  margin-left: 10px;
+}
+
+.profile-btn {
+  background-color: #117be5;
+  color: #fff;
+  font-weight: 400;
+  padding: 6px 16px;
+  border-radius: 4px;
+}
+
+.profile-btn:not(:first-child) {
+  margin-left: 5px;
+}
+
+.profile-btn:hover {
+  opacity: 1;
+  background-color: #1275d8;
+}
+
+.profile-btn:focus {
+  color: #fff;
+}
+
+.report-btn {
+  background-color: #dc2525;
+}
+
+.report-btn:hover {
+  opacity: 1;
+  background-color: rgb(186, 20, 20);
+}
+
+@media (max-width: 768px) {
+  .personal-info {
+    align-items: flex-start;
+    gap: 20px;
+    justify-content: center;
+  }
+
+  .user-avatar {
+    width: 75px;
+    height: 75px;
+  }
+
+  .award>svg {
+    font-size: 30px;
+  }
+}
+
+@media (max-width: 400px) {
+  .award>svg {
+    display: none;
+  }
+}

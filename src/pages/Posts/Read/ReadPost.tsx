@@ -13,6 +13,8 @@ export default function ReadPost() {
   const [isLoading, setIsLoading] = useState<boolean>(true)
   const { search } = useLocation()
 
+  const id = search.split('=')[1]
+
   const getPost = async (query: string) => {
     const id = query.split('=')[1]
 
@@ -33,10 +35,10 @@ export default function ReadPost() {
   return (
     <Container className='readpost'>
       <div className='readpost-container'>
-      {isLoading && <Loader />}
-      {post && <PostFullView post={post} />}
-      <Editor />
-      <CommentsView />
+        {isLoading && <Loader />}
+        {post && <PostFullView post={post} />}
+        <Editor postId={id} />
+        <CommentsView postId={id} />
       </div>
     </Container>
   )

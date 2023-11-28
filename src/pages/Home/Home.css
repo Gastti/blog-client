@@ -1,3 +1,7 @@
 .posts-container {
   padding-bottom: 60px;
 }
+
+.posts-container:first-child {
+  margin-top: 10px
+}

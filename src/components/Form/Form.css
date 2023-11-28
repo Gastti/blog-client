@@ -1,7 +1,8 @@
-.form-container{
+.form-container {
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
+  min-height: 100vh;
+  width: 100%;
 }
 
 .form-container>span {
@@ -13,28 +14,36 @@
   margin-top: 2px;
 }
 
-.form-container input {
-  background-color: transparent;
+.form-container input,
+.form-container textarea {
   border: none;
   padding: 15px 10px;
-  border-radius: 2px;
+  border-radius: 6px;
   margin-top: 10px;
+  font-family: inherit;
 }
 
-.light-mode .form-container input {
+.light-mode .form-container input,
+.light-mode .form-container textarea {
+  background-color: #ffffff;
   color: #101010;
-  background-color: #00000005;
-  border: 1px solid #00000020;
 }
 
-.dark-mode .form-container input {
+.dark-mode .form-container input,
+.dark-mode .form-container textarea {
+  background-color: #ffffff08;
   color: #fff;
-  background-color: #ffffff05;
-  border: 1px solid #ffffff10;
 }
 
-.form-container input:focus {
+.form-container input:focus,
+.form-container textarea {
   outline: none;
+}
+
+.form-container textarea {
+  flex-grow: 1;
+  width: 100%;
+  resize: none;
 }
 
 .form-title {
@@ -60,8 +69,7 @@
   padding: 12px 26px;
   font-weight: 600;
   cursor: pointer;
-  margin: 0 auto;
-  margin-top: 10px;
+  margin: 10px auto;
 }
 
 .form-btn-submit:hover {

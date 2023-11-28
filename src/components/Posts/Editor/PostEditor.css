@@ -1,0 +1,14 @@
+.posteditor-container {
+  width: 100%;
+  height: 100%;
+  font-family: inherit;
+}
+
+.posteditor-textarea {
+  width: 100%;
+  height: 100%;
+  resize: none;
+  padding: 10px;
+  outline: none;
+  border: none;
+}

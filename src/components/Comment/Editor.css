@@ -1,17 +1,31 @@
 .comment-editor {
-  padding: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   display: flex;
-  padding-bottom: 100px;
+  margin-bottom: 10px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+
+.light-mode .comment-editor {
+  border-top: 1px solid #00000020;
+  border-bottom: 1px solid #00000020;
+}
+
+.dark-mode .comment-editor {
+  border-top: 1px solid #ffffff20;
+  border-bottom: 1px solid #ffffff20;
 }
 
 .comment-editor>input {
   width: 100%;
-  padding: 10px 0px;
+  padding: 14px 0px;
   padding-left: 10px;
   border: none;
   font-size: 1rem;
   flex-wrap: 1;
   color: inherit;
+  border-radius: 4px 0px 0px 4px;
 }
 
 .comment-editor>input:focus {
@@ -19,13 +33,13 @@
 }
 
 .light-mode .comment-editor>input,
-.light-mode .comment-editor>button  {
-  background-color: #00000010;
+.light-mode .comment-editor>button {
+  background-color: #ffffff;
 }
 
 .dark-mode .comment-editor>input,
-.dark-mode .comment-editor>button  {
-  background-color: #ffffff10;
+.dark-mode .comment-editor>button {
+  background-color: #ffffff08;
 }
 
 .comment-editor>button {
@@ -38,6 +52,7 @@
   padding: 0px 10px;
   font-size: 1rem;
   font-weight: 600;
+  border-radius: 0px 4px 4px 0px;
 }
 
 .comment-editor>button>svg {
@@ -56,4 +71,9 @@
   .comment-editor>button {
     padding: 0px 10px;
   }
+}
+
+.disabled {
+  color: transparent !important;
+  cursor: pointer;
 }

@@ -113,16 +113,6 @@ export default function Navbar() {
         <div className='navbar-links'>
           {renderRoutes()}
 
-          {/*Logout Button*/}
-          {isLogged && (
-            <a
-              onClick={() => setOpenModal(true)}
-            >
-              <LogoutOutlinedIcon sx={{ fontSize: 28 }} />
-              <span>Cerrar sesión</span>
-            </a>
-          )}
-
           {/*Switch Theme Button*/}
           <a
             onClick={handleSwitch}
@@ -132,6 +122,16 @@ export default function Navbar() {
               : <LightModeOutlinedIcon sx={{ fontSize: 28 }} />}
             <span>Cambiar aspecto</span>
           </a>
+
+          {/*Logout Button*/}
+          {isLogged && (
+            <a
+              onClick={() => setOpenModal(true)}
+            >
+              <LogoutOutlinedIcon sx={{ fontSize: 28, color: 'red' }} />
+              <span style={{color: 'red'}}>Cerrar sesión</span>
+            </a>
+          )}
         </div>
       </div>
       {/*Logout Modal*/}

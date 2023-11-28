@@ -4,20 +4,25 @@
   flex-direction: column;
   justify-content: flex-start;
   position: relative;
-
+  gap: 10px;
+  padding-bottom: 10px;
+  margin: 0px 10px 30px 10px;
+  border-radius: 6px;
+  overflow: hidden;
 }
 
 .light-mode .post-quick-view {
-  border-bottom: 0px solid #10101020;
+  /* border-bottom: 1px solid #10101020; */
+  background-color: #ffffff;
 }
 
 .dark-mode .post-quick-view {
-  border-bottom: 0px solid #ffffff20;
+  /* border-bottom: 1px solid #ffffff20; */
+  background-color: #ffffff08;
 }
 
 .pqv-cover {
   width: 100%;
-  border-radius: 3px;
   overflow: hidden;
   aspect-ratio: 3/1;
 }
@@ -57,7 +62,12 @@
 .pqv-title {
   text-decoration: none;
   color: inherit;
-  padding-left: 10px;
+  font-size: 1.8rem;
+  cursor: pointer;
+}
+
+.pqv-title:hover {
+  opacity: 0.9;
 }
 
 .pqv-header .date {
@@ -74,7 +84,6 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 15px 10px;
 }
 
 .pqv-author-info {
@@ -82,22 +91,12 @@
   gap: 10px;
 }
 
-.light-mode .pqv-author > span {
+.light-mode .pqv-author>span {
   color: #00000070;
 }
 
-.dark-mode .pqv-author > span {
+.dark-mode .pqv-author>span {
   color: #ffffff70;
-}
-
-.light-mode .pqv-author {
-  border-top: 1px solid #00000020;
-  border-bottom: 1px solid #00000020;
-}
-
-.dark-mode .pqv-author {
-  border-top: 1px solid #ffffff20;
-  border-bottom: 1px solid #ffffff20;
 }
 
 .pqv-author .avatar {
@@ -135,31 +134,23 @@
 
 .pqv-content {
   position: relative;
-  padding: 0px 10px;
-  max-height: 100px;
   overflow: hidden;
-}
-
-.pqv-content::before {
-  content: '';
-  position: absolute;
-  width: calc(100% - 10px);
-  height: 80%;
-  bottom: 0px;
-  background-color: transparent;
-}
-
-.light-mode .pqv-content::before {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #ffffff 85%);
-}
-
-.dark-mode .pqv-content::before {
-  background: linear-gradient(180deg, rgba(0, 0, 0, 0) 0%, #101010 85%);
 }
 
 .pqv-publishat {
   opacity: 0.6;
-  padding: 5px 10px;
+}
+
+.pqv-title,
+.pqv-article,
+.pqv-footer {
+  padding: 0px 10px;
+}
+
+@media (max-width: 849px) {
+  .post-quick-view {
+    margin: 10px;
+  }
 }
 
 @media (max-width: 768px) {
@@ -170,5 +161,20 @@
 
 .pqv-footer {
   display: flex;
-  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding-top: 10px;
+  margin-top: 10px;
+}
+
+.light-mode .pqv-footer {
+  border-top: 1px solid #10101020;
+}
+
+.dark-mode .pqv-footer {
+  border-top: 1px solid #ffffff20;
+}
+
+.pqv-article a {
+  cursor: pointer;
 }

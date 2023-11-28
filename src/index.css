@@ -16,6 +16,9 @@
   --light-c-pri: #fff;
   --light-c-sec: #101010;
 
+  --light-c-bg: #f4f4f4;
+  --dark-c-bg: #15151b;
+
   /* Navbar Width Sizes */
   --nav-narrow-width: 72px;
   --nav-medium-width: 244px;
@@ -38,7 +41,7 @@ body {
   box-sizing: border-box;
 }
 
-*:not(ol) {
+*:not(ol):not(ul) {
   padding: 0;
 }
 
@@ -68,6 +71,10 @@ body {
 }
 
 @media (max-width: 768px) {
+  body {
+    font-size: 0.9rem;
+  }
+
   .light-mode .custom-input {
     color: #101010;
     background-color: transparent;
@@ -86,9 +93,21 @@ a {
 }
 
 a:hover {
-  color: inherit;
+  opacity: 0.9;
 }
 
 a:focus {
   color: #1a74cf;
+}
+
+h1 {
+  font-size: 3rem;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
 }

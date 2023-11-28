@@ -8,10 +8,10 @@ import Loader from '../Loader/Loader'
 import { PostEntry } from '../../types'
 import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import KeyboardArrowRightOutlinedIcon from '@mui/icons-material/KeyboardArrowRightOutlined'
-import ReactQuill from 'react-quill'
 import { useNavigate } from 'react-router-dom'
 import { methods } from '../../enums'
 import useAxios from '../../hooks/useAxios'
+import PostEditor from '../Posts/Editor/PostEditor'
 
 const PostValidationSchema = Yup.object().shape({
   title: Yup.string()
@@ -51,12 +51,18 @@ export default function CreatePost() {
     )
   }
 
+  const handleChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
+    setContent(e.target.value);
+    console.log(content);
+  };
+
   const onSubmit = async (values: PostEntry) => {
     const formData = new FormData();
     formData.append('title', values.title);
     formData.append('content', content);
     formData.append('category', values.category);
     formData.append('tags', values.tags);
+
     if (values.image) {
       formData.append('image', values.image);
     }
@@ -94,12 +100,16 @@ export default function CreatePost() {
                     <KeyboardArrowRightOutlinedIcon />
                   </button>
                 </div>
+
                 <Field name="title" placeholder='Escribe el titulo' />
                 <ErrorMessage name="title" render={renderError} />
+
                 <Field name="category" placeholder='Escribe la categoria' />
                 <ErrorMessage name="category" render={renderError} />
+
                 <Field name="tags" placeholder='Escribe los tags asi: taguno,tagdos,tagtres' />
                 <ErrorMessage name="tags" render={renderError} />
+
                 <input
                   name="image"
                   type="file"
@@ -110,11 +120,10 @@ export default function CreatePost() {
                   }}
                 />
                 <ErrorMessage name="image" render={renderError} />
-                <ReactQuill
-                  theme="snow"
-                  value={content}
-                  onChange={setContent}
-                  placeholder='Escribe el contenido de tu publicación' />
+
+                <PostEditor
+                  onChange={handleChange}
+                />
               </Form>
             )}
           </>

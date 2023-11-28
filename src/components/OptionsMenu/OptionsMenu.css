@@ -1,0 +1,88 @@
+.optionsmenu-layout {
+  position: relative;
+}
+
+.optionsmenu-btn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  background-color: transparent;
+  cursor: pointer;
+  transition: all .2s;
+  border: none;
+}
+
+.light-mode .optionsmenu-btn {
+  color: #101010;
+  /* border: 1px solid #101010; */
+}
+
+.dark-mode .optionsmenu-btn {
+  color: #404040;
+  /* border: 1px solid #404040; */
+}
+
+.optionsmenu-btn:hover {
+  background-color: #117be530;
+  color: #117be5;
+}
+
+.optionsmenu-content {
+  position: absolute;
+  right: 0px;
+  width: 240px;
+  background-color: #ffffff;
+  border-radius: 6px;
+  overflow: hidden;
+  border: 1px solid #f1f1f1;
+}
+
+.dark-mode .optionsmenu-content {
+  background-color: var(--dark-c-bg);
+  border: 1px solid #262626;
+}
+
+.optionsmenu-content ul {
+  padding: 0px;
+  list-style: none;
+}
+
+.optionsmenu-content ul>li {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px;
+  cursor: pointer;
+}
+
+.optionsmenu-content ul>li:not(:first-child):not(:last-child) {
+  margin-bottom: 5px;
+}
+
+.light-mode .optionsmenu-content ul>li:hover {
+  background-color: #f8f8f8;
+}
+
+.dark-mode .optionsmenu-content ul>li:hover {
+  background-color: #ffffff08;
+}
+
+/*ANIMATIONS*/
+
+.optionsmenu-content {
+  opacity: 0;
+  transition: all .3s;
+}
+
+.optionsmenu-content.active {
+  opacity: 1;
+}
+
+@media (max-width: 768px) {
+  .optionsmenu-layout {
+    margin-right: 10px;
+  }
+}

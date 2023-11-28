@@ -1,4 +1,3 @@
-import './Login.css'
 import { useEffect, useState } from 'react'
 import { Formik, Field, ErrorMessage } from 'formik'
 import * as Yup from "yup";
@@ -9,7 +8,6 @@ import ErrorOutlineOutlinedIcon from '@mui/icons-material/ErrorOutlineOutlined'
 import { Link, useNavigate } from 'react-router-dom';
 import Loader from '../Loader/Loader';
 import Form from '../Form/Form';
-// import { getMyUser } from '../../services/user';
 import { useSession } from '../../hooks/useSession';
 import { handleLocalStorageTokens } from '../../utils/tokenUtils';
 
@@ -25,10 +23,18 @@ const RegisterValidationSchema = Yup.object().shape({
     .required('La contraseña es obligatoria.'),
 });
 
+const errors: { [key: number]: string } = {
+  400: 'Ha ocurrido un error. Vuelve a intentarlo.',
+  401: 'Tu contraseña no es correcta. Vuelve a intentarlo.',
+  404: 'No existe una cuenta asociada al correo/usuario que has introducido.'
+}
+
 export default function Register() {
   const { setIsLogged } = useSession()
   const navigate = useNavigate()
   const [submitted, setSubmitted] = useState<boolean>(false)
+  const [isSubmitting, setIsSubmitting] = useState<boolean>(false)
+  const [responseError, setResponseError] = useState<string | null>(null)
   const initialValues: LoginValues = {
     email: '',
     password: ''
@@ -41,15 +47,21 @@ export default function Register() {
   }
 
   const onSubmit = (values: LoginValues) => {
+    setIsSubmitting(true)
     login(values)
       .then(response => {
+        setIsSubmitting(false)
         const { data } = response
         handleLocalStorageTokens(data.access, data.refresh)
         setSubmitted(true)
         setIsLogged(true)
         navigate('/')
       })
-      .catch(error => console.log(error))
+      .catch(error => {
+        setIsSubmitting(false)
+        const errorStatus: number = error.response.status
+        setResponseError(errors[errorStatus])
+      })
   }
 
   useEffect(() => {
@@ -70,7 +82,7 @@ export default function Register() {
         validationSchema={RegisterValidationSchema}
         onSubmit={onSubmit}
       >
-        {({ handleSubmit, isSubmitting }) => (
+        {({ handleSubmit }) => (
           <div className='register-form-container'>
             <div className='register-form-content'>
               {(isSubmitting && !submitted) && <Loader />}
@@ -86,6 +98,7 @@ export default function Register() {
                   <Field name="password" placeholder='Contraseña' type='password' />
                   <ErrorMessage name="password" render={renderError} />
                   <button type='submit' className='form-btn-submit' disabled={isSubmitting}>Iniciar sesion</button>
+                  {responseError && <span style={{ margin: '0 auto' }}>{responseError}</span>}
                 </Form>
               )}
             </div>

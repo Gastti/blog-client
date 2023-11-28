@@ -66,7 +66,9 @@ export default function Register() {
               console.log(response)
               setSubmitted(true)
             })
-            .catch(error => console.log(error))
+            .catch(error => {
+              console.log(error)
+            })
         }}
       >
         {({ handleSubmit, isSubmitting }) => (
