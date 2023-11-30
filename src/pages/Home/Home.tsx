@@ -6,7 +6,7 @@ import PostQuickView from '../../components/Posts/QuickView/PostQuickView'
 import Loader from '../../components/Loader/Loader'
 import { getAllPosts } from '../../services/posts'
 
-export default function Search() {
+export default function Home() {
   const [posts, setPosts] = useState<Array<Post>>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 

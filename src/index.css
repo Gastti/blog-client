@@ -111,3 +111,13 @@ h2 {
 h3 {
   font-size: 2rem;
 }
+
+/* Para navegadores basados en WebKit (Chrome, Safari) */
+input:-webkit-autofill {
+  background-color: red;
+}
+
+/* Para navegadores basados en Gecko (Firefox) */
+input:-moz-autofill {
+ background-color: red;
+}

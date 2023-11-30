@@ -1,5 +1,8 @@
 import axios from "axios"
 import { baseUrl } from "./shared"
+import useAxios from "../hooks/useAxios"
+
+const api = useAxios()
 
 export const getAllPosts = async () => {
   const response = await axios.get(`${baseUrl}/posts`)
@@ -33,3 +36,10 @@ export const sendEditedPost = async (body: FormData, token: string, id: string) 
   })
   return response
 }
+
+/* New logic for data fetching */
+
+// export const deletePost = async (api: any, id: string) => {
+//   const response = await api.delete(`/posts/${id}`)
+//   console.log(response)
+// }

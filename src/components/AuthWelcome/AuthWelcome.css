@@ -1,0 +1,11 @@
+.auth-welcome {
+  text-align: center;
+}
+
+.auth-welcome>h1 {
+  font-size: 4rem;
+}
+
+.auth-welcome>h1>span {
+  color: #06c;
+}

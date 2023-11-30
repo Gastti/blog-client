@@ -18,7 +18,7 @@ export default function PostFullView({ post }: { post: Post }) {
   return (
     <article className='post-full-view'>
       <div className='pfv-options'>
-        <OptionsMenu isAuthor={isAuthor} />
+        <OptionsMenu isAuthor={isAuthor} postId={post._id} />
       </div>
       <div className="pfv-header">
         <h2 className='title'>{post.title}</h2>

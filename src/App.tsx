@@ -1,37 +1,49 @@
+import { Suspense, lazy } from 'react'
 import { HashRouter, Routes, Route } from 'react-router-dom'
 import { ThemeContextProvider } from './context/ThemeContext'
-import Navbar from './components/Navbar/Navbar'
-import Home from './pages/Home/Home'
-import CreatePostPage from './pages/Posts/Create/CreatePostPage'
-import Search from './pages/Search/Search'
-import Explore from './pages/Explore/Explore'
-import ReadPost from './pages/Posts/Read/ReadPost'
-import RegisterPage from './pages/Auth/Register/RegisterPage'
-import LoginPage from './pages/Auth/Login/LoginPage'
+const Navbar = lazy(() => import('./components/Navbar/Navbar'))
+const Home = lazy(() => import('./pages/Home/Home'))
+const CreatePostPage = lazy(() => import('./pages/Posts/Create/CreatePostPage'))
+const Search = lazy(() => import('./pages/Search/Search'))
+const Explore = lazy(() => import('./pages/Explore/Explore'))
+const ReadPost = lazy(() => import('./pages/Posts/Read/ReadPost'))
+const RegisterPage = lazy(() => import('./pages/Auth/Register/RegisterPage'))
+const LoginPage = lazy(() => import('./pages/Auth/Login/LoginPage'))
 import { SessionContextProvider } from './context/SessionContext'
-import EditPost from './pages/Posts/Edit/EditPost'
-import MePage from './pages/Users/Me/MePage'
+const EditPost = lazy(() => import('./pages/Posts/Edit/EditPost'))
+const MePage = lazy(() => import('./pages/Users/Me/MePage'))
+import Container from './components/Container/Container'
+import { useAlert } from './hooks/useAlert'
+
+
 
 function App() {
+  const { Alerts } = useAlert()
   return (
-    <HashRouter>
-      <SessionContextProvider>
-        <ThemeContextProvider>
-          <Navbar />
-          <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/search" element={<Search />} />
-            <Route path="/explore" element={<Explore />} />
-            <Route path='/posts/create' element={<CreatePostPage />} />
-            <Route path='/read' element={<ReadPost />} />
-            <Route path='/auth/register' element={<RegisterPage />} />
-            <Route path='/auth/login/' element={<LoginPage />} />
-            <Route path='/edit' element={<EditPost />} />
-            <Route path='/users/me' element={<MePage />} />
-          </Routes>
-        </ThemeContextProvider>
-      </SessionContextProvider>
-    </HashRouter>
+    <Suspense fallback={<div></div>}>
+      <HashRouter>
+        <SessionContextProvider>
+          <ThemeContextProvider>
+
+            <Navbar />
+            <Container><Alerts /></Container>
+
+            <Routes>
+              <Route path="/" element={<Home />} />
+              <Route path="/search" element={<Search />} />
+              <Route path="/explore" element={<Explore />} />
+              <Route path='/posts/create' element={<CreatePostPage />} />
+              <Route path='/read' element={<ReadPost />} />
+              <Route path='/auth/register' element={<RegisterPage />} />
+              <Route path='/auth/login/' element={<LoginPage />} />
+              <Route path='/edit' element={<EditPost />} />
+              <Route path='/users/me' element={<MePage />} />
+            </Routes>
+
+          </ThemeContextProvider>
+        </SessionContextProvider>
+      </HashRouter>
+    </Suspense>
   )
 }
 

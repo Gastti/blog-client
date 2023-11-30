@@ -30,6 +30,10 @@
   color: #117be5;
 }
 
+.optionsmenu-btn:active {
+  background-color: #117be515;
+}
+
 .optionsmenu-content {
   position: absolute;
   right: 0px;
@@ -56,6 +60,7 @@
   gap: 10px;
   padding: 10px;
   cursor: pointer;
+  transition: all .1s;
 }
 
 .optionsmenu-content ul>li:not(:first-child):not(:last-child) {
@@ -68,6 +73,20 @@
 
 .dark-mode .optionsmenu-content ul>li:hover {
   background-color: #ffffff08;
+}
+
+.optionsmenu-content ul>li.warn {
+  color: #c21a1a;
+}
+
+.optionsmenu-content ul>li.warn:hover {
+  background-color: #b81414;
+  color: #fff;
+}
+
+
+.optionsmenu-content > h4 {
+  padding: 10px;
 }
 
 /*ANIMATIONS*/

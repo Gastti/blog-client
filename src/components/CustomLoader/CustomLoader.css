@@ -1,0 +1,34 @@
+.custom-loader-container {
+  width: 100%;
+  height: 100%;
+  top: 0px;
+  left: 0px;
+  position: absolute;
+  backdrop-filter: blur(4px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.custom-loader-content {
+  width: 50px;
+  height: 50px;
+  border-top: 3px solid #117be5;
+  border-right: 3px solid #117be5;
+  border-bottom: 3px solid transparent;
+  border-left: 3px solid transparent;
+  animation: loading 1s infinite;
+  animation-timing-function: ease-in-out;
+  border-radius: 50%;
+}
+
+@keyframes loading {
+  from {
+    transform: rotateZ(0deg);
+  }
+
+  to {
+    transform: rotateZ(360deg);
+  }
+}

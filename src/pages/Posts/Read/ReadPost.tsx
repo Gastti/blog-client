@@ -37,6 +37,7 @@ export default function ReadPost() {
       <div className='readpost-container'>
         {isLoading && <Loader />}
         {post && <PostFullView post={post} />}
+
         <Editor postId={id} />
         <CommentsView postId={id} />
       </div>

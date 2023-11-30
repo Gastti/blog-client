@@ -25,7 +25,7 @@
   font-size: 1rem;
   flex-wrap: 1;
   color: inherit;
-  border-radius: 4px 0px 0px 4px;
+  border-radius: 6px 0px 0px 6px;
 }
 
 .comment-editor>input:focus {
@@ -52,7 +52,7 @@
   padding: 0px 10px;
   font-size: 1rem;
   font-weight: 600;
-  border-radius: 0px 4px 4px 0px;
+  border-radius: 0px 6px 6px 0px;
 }
 
 .comment-editor>button>svg {

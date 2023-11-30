@@ -12,6 +12,7 @@ import { useNavigate } from 'react-router-dom'
 import { methods } from '../../enums'
 import useAxios from '../../hooks/useAxios'
 import PostEditor from '../Posts/Editor/PostEditor'
+import { useAlert } from '../../hooks/useAlert'
 
 const PostValidationSchema = Yup.object().shape({
   title: Yup.string()
@@ -33,14 +34,15 @@ const PostValidationSchema = Yup.object().shape({
 export default function CreatePost() {
   const api = useAxios()
   const navigate = useNavigate()
+  const { createToast } = useAlert()
   const [submitted, setSubmitted] = useState<boolean>(false)
-  const [content, setContent] = useState<string>('')
+  const [content, setContent] = useState<string>("Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Volutpat est velit egestas dui id ornare arcu odio ut. Feugiat vivamus at augue eget arcu dictum varius duis. Auctor eu augue ut lectus arcu bibendum. Quam vulputate dignissim suspendisse in est ante in nibh mauris. Dis parturient montes nascetur ridiculus mus mauris vitae ultricies. Facilisis gravida neque convallis a cras. Congue mauris rhoncus aenean vel. Quis auctor elit sed vulputate mi sit. Nec feugiat in fermentum posuere urna nec tincidunt praesent semper. Id consectetur purus ut faucibus pulvinar elementum. Integer feugiat scelerisque varius morbi enim nunc faucibus. Amet venenatis urna cursus eget nunc scelerisque. Lorem donec massa sapien faucibus et molestie ac feugiat sed. Suspendisse sed nisi lacus sed viverra tellus in hac. Neque sodales ut etiam sit amet nisl purus. Augue mauris augue neque gravida in fermentum et sollicitudin ac. Volutpat blandit aliquam etiam erat velit. Nulla malesuada pellentesque elit eget gravida cum sociis natoque penatibus. Ullamcorper velit sed ullamcorper morbi. Risus at ultrices mi tempus imperdiet nulla malesuada pellentesque elit. Pharetra massa massa ultricies mi quis hendrerit dolor magna. Consectetur a erat nam at lectus urna duis convallis. Dignissim cras tincidunt lobortis feugiat vivamus. Integer enim neque volutpat ac.")
   const [postId, setPostId] = useState<string>('')
 
   const initialValues: PostEntry = {
-    title: '',
+    title: 'Publicación de prueba',
     content: '',
-    category: '',
+    category: 'Testing',
     image: undefined,
     tags: ''
   }
@@ -71,6 +73,9 @@ export default function CreatePost() {
     if (response.status === 200) {
       setSubmitted(true)
       setPostId(response.data.data._id)
+      createToast({ children: 'Publicado con exito.', variant: 'success' })
+    } else {
+      createToast({ children: 'No se ha podido publicar. Intenta mas tarde.', variant: 'danger' })
     }
   }
 
@@ -123,6 +128,7 @@ export default function CreatePost() {
 
                 <PostEditor
                   onChange={handleChange}
+                  value={content}
                 />
               </Form>
             )}
