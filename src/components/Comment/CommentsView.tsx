@@ -2,8 +2,9 @@ import './CommentsView.css'
 import { useEffect, useState } from 'react'
 import useAxios from '../../hooks/useAxios'
 import { Author } from '../../types'
+import Editor from './Editor'
 
-interface IComment {
+export interface IComment {
   _id: string
   author: Author
   content: string
@@ -11,7 +12,7 @@ interface IComment {
 
 export default function CommentsView({ postId }: { postId: string }) {
   const api = useAxios()
-  const [comments, setComments] = useState<Array<IComment> | null>(null)
+  const [comments, setComments] = useState<Array<IComment>>([])
 
   const fetchComments = async () => {
     const response = await api.get(`/comments/${postId}`)
@@ -20,29 +21,34 @@ export default function CommentsView({ postId }: { postId: string }) {
 
   useEffect(() => {
     fetchComments()
-    console.log(comments)
   }, [postId])
   return (
-    <ul className='comments-list'>
-      {!comments || comments.length <= 0 && <li>No hay comentarios.</li>}
-      {comments && comments.map(comment => (
-        <li key={comment._id}>
-          <div className='comment-author'>
-            <div className='comment-author-avatar'>
-              <img src={comment.author.avatar} />
-            </div>
-            <div>
-              <div className='comment-author-info'>
-                <h4>{comment.author.firstname} {comment.author.lastname}</h4>
-                <span>@{comment.author.username}</span>
+    <>
+      <ul className='comments-list'>
+        {!comments || comments.length == 0 && <li>No hay comentarios.</li>}
+        {comments && comments.map(comment => (
+          <li key={comment._id}>
+            <div className='comment-author'>
+              <div className='comment-author-avatar'>
+                <img src={comment.author.avatar} />
               </div>
-              <p>
-                {comment.content}
-              </p>
+              <div>
+                <div className='comment-author-info'>
+                  <h4>{comment.author.firstname} {comment.author.lastname}</h4>
+                  <span>@{comment.author.username}</span>
+                </div>
+                <p>
+                  {comment.content}
+                </p>
+              </div>
             </div>
-          </div>
-        </li>
-      ))}
-    </ul>
+          </li>
+        ))}
+      </ul>
+      <Editor
+        postId={postId}
+        setComments={setComments}
+      />
+    </>
   )
 }

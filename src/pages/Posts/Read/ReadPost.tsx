@@ -5,7 +5,6 @@ import Container from '../../../components/Container/Container'
 import PostFullView from '../../../components/Posts/FullView/PostFullView'
 import Loader from '../../../components/Loader/Loader'
 import { getPostById } from '../../../services/posts'
-import Editor from '../../../components/Comment/Editor'
 import CommentsView from '../../../components/Comment/CommentsView'
 
 export default function ReadPost() {
@@ -37,8 +36,6 @@ export default function ReadPost() {
       <div className='readpost-container'>
         {isLoading && <Loader />}
         {post && <PostFullView post={post} />}
-
-        <Editor postId={id} />
         <CommentsView postId={id} />
       </div>
     </Container>

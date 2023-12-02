@@ -5,6 +5,10 @@
   margin-left: auto;
 }
 
+.container:last-child {
+  padding-bottom: 100px;
+}
+
 @media (max-width: 1870px) {
   .container {
     width: calc(100% - var(--nav-medium-width));

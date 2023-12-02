@@ -5,6 +5,7 @@
   margin-bottom: 10px;
   margin-left: 10px;
   margin-right: 10px;
+  position: relative;
 }
 
 .light-mode .comment-editor {
