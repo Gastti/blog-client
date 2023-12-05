@@ -5,13 +5,12 @@ import { useMediaQuery } from 'react-responsive'
 import { useTheme } from '../../hooks/useTheme'
 import Modal from '../Modal/Modal'
 import HomeIcon from '@mui/icons-material/Home'
-import SearchIcon from '@mui/icons-material/Search'
-// import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined'
 import DarkModeOutlinedIcon from '@mui/icons-material/DarkModeOutlined'
 import LightModeOutlinedIcon from '@mui/icons-material/LightModeOutlined'
 import DriveFileRenameOutlineOutlinedIcon from '@mui/icons-material/DriveFileRenameOutlineOutlined'
 import LoginOutlinedIcon from '@mui/icons-material/LoginOutlined'
 import LogoutOutlinedIcon from '@mui/icons-material/LogoutOutlined'
+import ExploreOutlinedIcon from '@mui/icons-material/ExploreOutlined'
 import { NavLink } from 'react-router-dom'
 import LogoNarrowWhite from '../../assets/images/logo-narrow-white.png'
 import LogoNarrowDark from '../../assets/images/logo-narrow-black.png'
@@ -44,21 +43,13 @@ export default function Navbar() {
       icon: <DriveFileRenameOutlineOutlinedIcon sx={{ fontSize: 28 }} />
     },
     {
-      label: 'Busqueda',
-      href: '/search',
+      label: 'Explorar',
+      href: '/explore',
       private: false,
       hideForUsers: false,
       onlyWriter: false,
-      icon: <SearchIcon sx={{ fontSize: 28 }} />
+      icon: <ExploreOutlinedIcon sx={{ fontSize: 28 }} />
     },
-    // {
-    //   label: 'Explorar',
-    //   href: '/explore',
-    //   private: false,
-    //   hideForUsers: false,
-    //   onlyWriter: false,
-    //   icon: <ExploreOutlinedIcon sx={{ fontSize: 28 }} />
-    // },
     {
       label: 'Iniciar sesión',
       href: '/auth/login',
@@ -129,7 +120,7 @@ export default function Navbar() {
               onClick={() => setOpenModal(true)}
             >
               <LogoutOutlinedIcon sx={{ fontSize: 28, color: 'red' }} />
-              <span style={{color: 'red'}}>Cerrar sesión</span>
+              <span style={{ color: 'red' }}>Cerrar sesión</span>
             </a>
           )}
         </div>

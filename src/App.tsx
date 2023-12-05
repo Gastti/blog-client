@@ -4,7 +4,6 @@ import { ThemeContextProvider } from './context/ThemeContext'
 const Navbar = lazy(() => import('./components/Navbar/Navbar'))
 const Home = lazy(() => import('./pages/Home/Home'))
 const CreatePostPage = lazy(() => import('./pages/Posts/Create/CreatePostPage'))
-const Search = lazy(() => import('./pages/Search/Search'))
 const Explore = lazy(() => import('./pages/Explore/Explore'))
 const ReadPost = lazy(() => import('./pages/Posts/Read/ReadPost'))
 const RegisterPage = lazy(() => import('./pages/Auth/Register/RegisterPage'))
@@ -30,7 +29,6 @@ function App() {
 
             <Routes>
               <Route path="/" element={<Home />} />
-              <Route path="/search" element={<Search />} />
               <Route path="/explore" element={<Explore />} />
               <Route path='/posts/create' element={<CreatePostPage />} />
               <Route path='/read' element={<ReadPost />} />
