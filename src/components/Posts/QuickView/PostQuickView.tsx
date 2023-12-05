@@ -5,6 +5,7 @@ import DOMPurify from 'dompurify'
 import { parseISO, formatDistance } from 'date-fns';
 import { es } from 'date-fns/locale';
 import { splitText } from '../../../utils/splitText';
+import Markdown from 'react-markdown';
 
 export default function PostQuickView({ post }: { post: Post }) {
   const cleanPostContent = DOMPurify.sanitize(post.content)
@@ -18,44 +19,42 @@ export default function PostQuickView({ post }: { post: Post }) {
     locale: es
   });
 
-  const splitedContent = splitText(cleanPostContent, 360) as string
+  const splitedContent = splitText(cleanPostContent, 260) as string
 
   return (
-    <article className='post-quick-view'>
+    <article
+      className='post-quick-view'
+      onClick={() => navigate(`/read?post=${post._id}`)}
+    >
+
       <div className='pqv-cover'>
         <img src={post.image.url} />
       </div>
 
-      <div
-        className='pqv-content-container'
-      >
-        <a
-          className='pqv-title'
-          onClick={() => navigate(`/read?post=${post._id}`)}
-        >
+      <div className='pqv-content'>
+        <h3>
           {post.title}
-        </a>
+        </h3>
+
         <div className='pqv-article'>
-          <div
-            className='pqv-content'
-            dangerouslySetInnerHTML={{ __html: splitedContent }}
-          />
-          <a onClick={() => navigate(`/read?post=${post._id}`)}>Leer publicación</a>
+          <Markdown>{splitedContent}</Markdown>
         </div>
-        <div className='pqv-footer'>
-          <span className='pqv-publishat'>Publicado hace {publishAt} por</span>
-          <div className='pqv-author'>
-            <div className='pqv-author-info'>
-              <div className='avatar'>
-                <img src={post.author.avatar} />
-              </div>
-              <p className='fullname'>
-                {post.author.firstname} {post.author.lastname}
-              </p>
+      </div>
+
+      <div className='pqv-footer'>
+        <span className='pqv-publishat'>Publicado hace {publishAt} por</span>
+        <div className='pqv-author'>
+          <div className='pqv-author-info'>
+            <div className='avatar'>
+              <img src={post.author.avatar} />
             </div>
+            <p className='fullname'>
+              {post.author.firstname} {post.author.lastname}
+            </p>
           </div>
         </div>
       </div>
+
     </article>
   )
 }

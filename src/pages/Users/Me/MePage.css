@@ -13,6 +13,10 @@
   padding: 5px 0px;
 }
 
+.post-header ul {
+  padding: 0;
+}
+
 .light-mode .post-header {
   background-color: #ffffff;
 }

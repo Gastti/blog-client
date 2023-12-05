@@ -9,6 +9,8 @@
   margin: 0px 10px 30px 10px;
   border-radius: 6px;
   overflow: hidden;
+  cursor: pointer;
+  user-select: none;
 }
 
 .light-mode .post-quick-view {
@@ -16,13 +18,22 @@
   background-color: #ffffff;
 }
 
+.light-mode .post-quick-view:hover {
+  outline: 1px solid #00000007;
+}
+
 .dark-mode .post-quick-view {
   /* border-bottom: 1px solid #ffffff20; */
   background-color: #ffffff08;
 }
 
+.dark-mode .post-quick-view:hover {
+  outline: 1px solid #ffffff20;
+}
+
 .pqv-cover {
   width: 100%;
+  max-height: 200px;
   overflow: hidden;
   aspect-ratio: 3/1;
 }
@@ -132,19 +143,17 @@
   font-size: 30px;
 }
 
-.pqv-content {
-  position: relative;
-  overflow: hidden;
-}
-
 .pqv-publishat {
   opacity: 0.6;
 }
 
-.pqv-title,
-.pqv-article,
+.pqv-content,
 .pqv-footer {
   padding: 0px 10px;
+}
+
+.pqv-content h3 {
+  margin-bottom: 10px;
 }
 
 @media (max-width: 849px) {

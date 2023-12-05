@@ -24,6 +24,11 @@ export default function CommentsView({ postId }: { postId: string }) {
   }, [postId])
   return (
     <>
+      <div className='comments-header'>
+        <h4>
+          Comentarios
+        </h4>
+      </div>
       <ul className='comments-list'>
         {!comments || comments.length == 0 && <li>No hay comentarios.</li>}
         {comments && comments.map(comment => (
@@ -34,7 +39,7 @@ export default function CommentsView({ postId }: { postId: string }) {
               </div>
               <div>
                 <div className='comment-author-info'>
-                  <h4>{comment.author.firstname} {comment.author.lastname}</h4>
+                  <h5>{comment.author.firstname} {comment.author.lastname}</h5>
                   <span>@{comment.author.username}</span>
                 </div>
                 <p>

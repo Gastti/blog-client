@@ -19,9 +19,9 @@ export default function PostSmallView({ post }: { post: Post }) {
       </div>
 
       <div className='psv-content'>
-        <h2 className='psv-title'>
+        <h3 className='psv-title'>
           {post.title}
-        </h2>
+        </h3>
         <div>
           <Markdown>{postContentSumary}</Markdown>
         </div>
