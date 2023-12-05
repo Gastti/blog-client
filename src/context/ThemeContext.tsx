@@ -17,7 +17,7 @@ export const ThemeContextProvider = ({ children }: ThemeContextProviderProps) =>
 
   const body = document.querySelector('body')
   if (body) {
-    body.style.backgroundColor = theme === 'light-mode' ? '#f4f4f4' : '#15151b'
+    body.style.backgroundColor = theme === 'light-mode' ? '#f1f1f1' : '#15151b'
     body.style.color = theme === 'light-mode' ? '#101010' : '#f1f1f1'
   }
 

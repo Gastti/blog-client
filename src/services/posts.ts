@@ -6,6 +6,11 @@ export const getAllPosts = async () => {
   return response
 }
 
+export const findPostByTitle = async (title: string) => {
+  const response = await axios.get(`${baseUrl}/posts/find?title=${title}`)
+  return response
+}
+
 export const getPostById = async (id: string) => {
   const response = await axios.get(`${baseUrl}/posts/find/${id}`)
   return response

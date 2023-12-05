@@ -2,28 +2,29 @@ import './PostSmallView.css'
 import { Post } from '../../../types'
 import { useNavigate } from 'react-router-dom'
 import { splitText } from '../../../utils/splitText'
+import Markdown from 'react-markdown'
 
 export default function PostSmallView({ post }: { post: Post }) {
   const navigate = useNavigate()
-  const postContentSumary = splitText(post.content, 150) as string
+  const postContentSumary = splitText(post.content, 250) as string
 
   return (
-    <article className='post-small-view'>
-      <div className='psv-content-container'>
-        {/* <div className='psv-cover'>
-          <img src={post.image.url} />
-        </div> */}
-        <a
-          className='psv-title'
-          onClick={() => navigate(`/read?post=${post._id}`)}
-        >
-          {post.title}
-        </a>
-        <p
-          dangerouslySetInnerHTML={{ __html: postContentSumary }}
-        >
+    <article
+      className='post-small-view'
+      onClick={() => navigate(`/read?post=${post._id}`)}
+    >
 
-        </p>
+      <div className='psv-cover'>
+        <img src={post.image.url} />
+      </div>
+
+      <div className='psv-content'>
+        <h2 className='psv-title'>
+          {post.title}
+        </h2>
+        <div>
+          <Markdown>{postContentSumary}</Markdown>
+        </div>
       </div>
     </article>
   )

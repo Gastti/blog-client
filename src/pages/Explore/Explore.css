@@ -1,0 +1,11 @@
+.explore-view {
+  flex-direction: column;
+  gap: 10px;
+  margin: 10px;
+}
+
+.explore-view-results {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
