@@ -1,0 +1,57 @@
+.pqv-skeleton {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  gap: 10px;
+  border-radius: 6px;
+  cursor: normal;
+  user-select: none;
+  transition: all .3s;
+  overflow: hidden;
+  margin-bottom: 10px;
+}
+
+.light-mode .pqv-skeleton {
+  background-color: #ffffff;
+}
+
+.dark-mode .pqv-skeleton {
+  background-color: #ffffff08;
+}
+
+.pqv-skeleton-cover {
+  height: 130px;
+}
+
+.pqv-skeleton-content {
+  padding: 0px 10px;
+  padding-bottom: 10px;
+}
+
+.pqv-skeleton-content h4 {
+  width: 60%;
+  height: 50px;
+  margin-bottom: 10px;
+  border-radius: 6px;
+  transition: all .3s;
+}
+
+.pqv-skeleton-content p {
+  width: 90%;
+  height: 25px;
+  border-radius: 6px;
+  transition: all .3s;
+}
+
+.pqv-skeleton-content p:not(:last-child) {
+  margin-bottom: 10px;
+}
+
+.pqv-skeleton-content p:nth-child(3) {
+  width: 80%;
+}
+
+.pqv-skeleton-content p:nth-child(4) {
+  width: 70%;
+}

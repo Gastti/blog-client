@@ -3,8 +3,9 @@ import { useEffect, useState } from 'react'
 import Container from '../../components/Container/Container'
 import { Post } from '../../types'
 import PostQuickView from '../../components/Posts/QuickView/PostQuickView'
-import Loader from '../../components/Loader/Loader'
 import { getAllPosts } from '../../services/posts'
+import PostQuickViewSkeleton from '../../components/Posts/QuickView/PostQuickViewSkeleton'
+import SubContainer from '../../components/SubContainer/SubContainer'
 
 export default function Home() {
   const [posts, setPosts] = useState<Array<Post>>([])
@@ -25,12 +26,15 @@ export default function Home() {
 
   return (
     <Container className='home'>
-      {isLoading && <Loader />}
-      <div className='posts-container'>
+      <SubContainer className='posts-container'>
+        {isLoading && (<>
+          <PostQuickViewSkeleton />
+          <PostQuickViewSkeleton />
+        </>)}
         {posts.map(post => (
           <PostQuickView key={post._id} post={post} />
         ))}
-      </div>
+      </SubContainer>
     </Container>
   )
 }

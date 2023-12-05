@@ -133,3 +133,41 @@ input:-webkit-autofill {
 input:-moz-autofill {
   background-color: red;
 }
+
+/* Skeleton Animation */
+
+.dark-mode .skeleton {
+  animation: skeleton-loading-dark 2s infinite linear;
+}
+
+@keyframes skeleton-loading-dark {
+  0% {
+    background-color: #ffffff05;
+  }
+
+  50% {
+    background-color: #ffffff10;
+  }
+
+  100% {
+    background-color: #ffffff05;
+  }
+}
+
+.light-mode .skeleton {
+  animation: skeleton-loading-light 2s infinite linear;
+}
+
+@keyframes skeleton-loading-light {
+  0% {
+    background-color: #00000008;
+  }
+
+  50% {
+    background-color: #00000013;
+  }
+
+  100% {
+    background-color: #00000008;
+  }
+}
