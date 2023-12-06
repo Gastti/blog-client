@@ -1,9 +1,9 @@
 import './CommentsView.css'
 import { useEffect, useState } from 'react'
-import useAxios from '../../hooks/useAxios'
 import { Author } from '../../types'
 import Editor from './Editor'
 import { useAlert } from '../../hooks/useAlert'
+import { getCommentsByPostId } from '../../services/comments'
 
 export interface IComment {
   _id: string
@@ -12,13 +12,12 @@ export interface IComment {
 }
 
 export default function CommentsView({ postId }: { postId: string }) {
-  const api = useAxios()
   const { createToast } = useAlert()
   const [comments, setComments] = useState<Array<IComment>>([])
   const [isLoading, setIsLoading] = useState<boolean>(true)
 
   const fetchComments = async () => {
-    const response = await api.get(`/comments/${postId}`)
+    const response = await getCommentsByPostId(postId)
 
     if (response.status !== 200) {
       setIsLoading(false)
