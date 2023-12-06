@@ -19,6 +19,9 @@
   --light-c-bg: #f4f4f4;
   --dark-c-bg: #15151b;
 
+  --light-c-border: #e5e5e7;
+  --dark-c-border: #2f2f31;
+
   /* Navbar Width Sizes */
   --nav-narrow-width: 72px;
   --nav-medium-width: 244px;
@@ -87,17 +90,21 @@ body {
 }
 
 a {
-  color: #117be5;
+  color: inherit;
   text-decoration: none;
-  font-weight: 600;
+  font-weight: 800;
 }
 
-a:hover {
-  opacity: 0.9;
+.light-mode a:hover {
+  border-bottom: 1px solid #101010;
+}
+
+.dark-mode a:hover {
+  border-bottom: 1px solid #f1f1f1;
 }
 
 a:focus {
-  color: #1a74cf;
+  color: inherit;
 }
 
 h1 {
@@ -124,14 +131,25 @@ h5 {
   font-size: 1rem;
 }
 
-/* Para navegadores basados en WebKit (Chrome, Safari) */
-input:-webkit-autofill {
-  background-color: red;
+input,
+textarea {
+  border: none;
+  border-radius: 8px !important;
+  padding: 12px 10px !important;
+  font-family: inherit !important;
+  font-size: 1rem !important;
 }
 
-/* Para navegadores basados en Gecko (Firefox) */
-input:-moz-autofill {
-  background-color: red;
+.light-mode input,
+.light-mode textarea {
+  background-color: #ffffff !important;
+  border: 1px solid #e3e3e3 !important;
+}
+
+.dark-mode input,
+.dark-mode textarea {
+  background-color: #242426 !important;
+  border: 1px solid #3a3a3c !important;
 }
 
 /* Skeleton Animation */

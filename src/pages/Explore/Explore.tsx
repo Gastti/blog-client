@@ -55,6 +55,7 @@ export default function Explore() {
           {isLoading && (<>
             <PostQuickViewSkeleton />
             <PostQuickViewSkeleton />
+            <PostQuickViewSkeleton />
           </>)}
 
           {results && results.length > 0 && results.map((post) => (

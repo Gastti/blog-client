@@ -10,6 +10,7 @@ import Form from '../Form/Form';
 import AuthWelcome from '../AuthWelcome/AuthWelcome';
 import CustomLoader from '../CustomLoader/CustomLoader';
 import { useAlert } from '../../hooks/useAlert';
+import Button from '../Button/Button';
 
 const RegisterValidationSchema = Yup.object().shape({
   username: Yup.string()
@@ -116,7 +117,7 @@ export default function Register() {
 
                 <p className='policy-agreement'>Al registrarte, aceptas nuestras Condiciones, nuestra Política de privacidad y nuestra Política de cookies.</p>
 
-                <button type='submit' className='form-btn-submit' disabled={isSubmitting}>Registrarse</button>
+                <Button type='submit' variant='primary' disabled={isSubmitting}>Crear cuenta</Button>
 
                 {responseError && <span style={{ margin: '0 auto' }}>{responseError}</span>}
               </Form>

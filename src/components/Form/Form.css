@@ -1,6 +1,7 @@
 .form-container {
   display: flex;
   flex-direction: column;
+  gap: 10px;
   width: 100%;
 }
 
@@ -10,17 +11,6 @@
   display: flex;
   align-items: center;
   gap: 5px;
-  margin-top: 2px;
-}
-
-.form-container input,
-.form-container textarea {
-  border: none;
-  padding: 15px 10px;
-  border-radius: 6px;
-  margin-top: 10px;
-  font-family: inherit;
-  font-size: 1rem;
 }
 
 .light-mode .form-container input,

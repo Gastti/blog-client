@@ -31,6 +31,10 @@
   margin: 40px 0px;
 }
 
+.logo:hover {
+  border: none!important;
+}
+
 .logo span {
   color: #06c;
 }
@@ -88,10 +92,12 @@
 
 .navbar.light-mode .navbar-links a:hover {
   background-color: #10101010;
+  border: none;
 }
 
 .navbar.dark-mode .navbar-links a:hover {
   background-color: #ffffff10;
+  border: none;
 }
 
 .navbar-links a>div {

@@ -26,7 +26,7 @@
   font-size: 1rem;
   flex-wrap: 1;
   color: inherit;
-  border-radius: 6px 0px 0px 6px;
+  border-radius: 8px 0px 0px 8px!important;
 }
 
 .comment-editor>input:focus {
@@ -75,6 +75,5 @@
 }
 
 .disabled {
-  color: transparent !important;
   cursor: pointer;
 }

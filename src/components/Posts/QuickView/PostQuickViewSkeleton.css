@@ -9,7 +9,6 @@
   user-select: none;
   transition: all .3s;
   overflow: hidden;
-  margin-bottom: 10px;
 }
 
 .light-mode .pqv-skeleton {

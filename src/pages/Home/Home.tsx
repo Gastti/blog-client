@@ -30,6 +30,8 @@ export default function Home() {
         {isLoading && (<>
           <PostQuickViewSkeleton />
           <PostQuickViewSkeleton />
+          <PostQuickViewSkeleton />
+          <PostQuickViewSkeleton />
         </>)}
         {posts.map(post => (
           <PostQuickView key={post._id} post={post} />

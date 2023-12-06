@@ -12,6 +12,7 @@ import { handleLocalStorageTokens } from '../../utils/tokenUtils';
 import AuthWelcome from '../AuthWelcome/AuthWelcome';
 import CustomLoader from '../CustomLoader/CustomLoader';
 import { useAlert } from '../../hooks/useAlert';
+import Button from '../Button/Button';
 
 const RegisterValidationSchema = Yup.object().shape({
   email: Yup.string()
@@ -101,7 +102,7 @@ export default function Register() {
                 <ErrorMessage name="email" render={renderError} />
                 <Field name="password" placeholder='Contraseña' type='password' />
                 <ErrorMessage name="password" render={renderError} />
-                <button type='submit' className='form-btn-submit' disabled={isSubmitting}>Iniciar sesion</button>
+                <Button type='submit' variant='primary' disabled={isSubmitting}>Iniciar sesión</Button>
                 {responseError && <span style={{ margin: '0 auto' }}>{responseError}</span>}
               </Form>
 

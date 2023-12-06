@@ -5,22 +5,21 @@
   overflow: hidden;
   cursor: pointer;
   user-select: none;
+  transition: all .2s;
 }
 
 .light-mode .post-small-view {
-  background-color: #ffffff;
-}
-
-.light-mode .post-small-view:hover {
-  outline: 2px solid #00000007;
+  background-color: transparent;
+  border: 1px solid var(--light-c-border);
 }
 
 .dark-mode .post-small-view {
-  background-color: #ffffff08;
+  background-color: transparent;
+  border: 1px solid var(--dark-c-border);
 }
 
-.dark-mode .post-small-view:hover {
-  outline: 2px solid #ffffff20;
+.post-small-view:hover {
+  scale: 1.01;
 }
 
 .psv-cover {

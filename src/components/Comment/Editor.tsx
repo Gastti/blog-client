@@ -5,6 +5,7 @@ import useAxios from '../../hooks/useAxios';
 import { IComment } from './CommentsView';
 import { useAlert } from '../../hooks/useAlert';
 import CustomLoader from '../CustomLoader/CustomLoader';
+import Button from '../Button/Button';
 
 interface EditorProps {
   postId: string
@@ -40,10 +41,10 @@ export default function Editor({ postId, setComments }: EditorProps) {
         }}
         disabled={isSubmitting}
       />
-      <button type='submit' disabled={comment.length <= 0} className={comment.length <= 0 ? 'disabled' : ''}>
+      <Button type='submit' disabled={comment.length <= 0}>
         <span>Publicar</span>
         <NorthIcon />
-      </button>
+      </Button>
     </form>
   )
 }

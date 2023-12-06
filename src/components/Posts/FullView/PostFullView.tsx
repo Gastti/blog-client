@@ -21,7 +21,7 @@ export default function PostFullView({ post }: { post: Post }) {
         <OptionsMenu isAuthor={isAuthor} postId={post._id} />
       </div>
       <div className="pfv-header">
-        <h2 className='title'>{post.title}</h2>
+        <h1 className='title'>{post.title}</h1>
         <span className='date'>Publicado {publishAt}</span>
       </div>
       <div className='pfv-cover'>

@@ -5,18 +5,20 @@ interface ButtonProps {
   children: React.ReactNode
   type: "button" | "submit" | "reset" | undefined;
   onClick?: React.MouseEventHandler<HTMLButtonElement> | undefined
-  primary?: boolean
+  variant?: "primary" | "secondary"
   secondary?: boolean
+  disabled?: boolean
 }
 
 export default function Button({
-  children, type, onClick, primary, secondary
+  children, type, onClick, variant = "primary", disabled
 }: ButtonProps) {
   return (
     <button
       type={type}
-      className={`btn ${primary ? 'primary' : ''}${secondary ? 'secondary' : ''}`}
+      className={`btn ${variant}`}
       onClick={onClick ? onClick : undefined}
+      disabled={disabled}
     >
       {children}
     </button>
