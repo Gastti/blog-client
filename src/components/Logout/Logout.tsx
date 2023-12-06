@@ -32,7 +32,7 @@ export default function Logout(
           Cerrar sesión
         </Button>
         <Button type='button'
-          primary
+          variant='secondary'
           onClick={handleGoBack}
         >
           Volver
